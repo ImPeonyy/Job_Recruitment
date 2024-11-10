@@ -9,13 +9,19 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PutJobComponent } from './pages/employers/put-job/put-job.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { JobSearchComponent } from './job-search/job-search.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
+    JobSearchComponent,
+    UserManagementComponent,
     PostJobComponent,
     PutJobComponent
+
   ],
   imports: [
     BrowserModule,
