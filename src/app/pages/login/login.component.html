@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <title>Existing Login Form</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+        background: url("https://antimatter.vn/wp-content/uploads/2022/05/background-dep-1.jpg")
+          no-repeat center center fixed;
+        background-size: cover;
+      }
+      .login-container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .login-box {
+        width: 400px;
+        padding: 40px;
+        background: rgba(0, 0, 0, 0.6);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        color: #fff;
+      }
+      .login-box h2 {
+        margin: 0 0 30px;
+        padding: 0;
+        text-align: center;
+        font-size: 24px;
+        color: #fff;
+      }
+      .login-box .textbox {
+        position: relative;
+        margin-bottom: 30px;
+      }
+      .login-box .textbox input {
+        width: 100%;
+        padding: 10px 10px 10px 40px;
+        background: none;
+        border: none;
+        border-bottom: 2px solid #4caf50;
+        outline: none;
+        color: #fff;
+        font-size: 18px;
+      }
+      .login-box .textbox i {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #4caf50;
+        font-size: 18px;
+      }
+      .login-box .textbox input::placeholder {
+        color: #fff;
+      }
+      .login-box .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+      .login-box .options input[type="checkbox"] {
+        margin-right: 10px;
+      }
+      .login-box .options a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .login-box .options a:hover {
+        color: #4caf50;
+      }
+      .login-box input[type="submit"] {
+        width: 100%;
+        background: #4caf50;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        color: #fff;
+        border-radius: 5px;
+      }
+      .login-box input[type="submit"]:hover {
+        background: #45a049;
+      }
+      .login-box .register {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .login-box .register a {
+        color: #4caf50;
+        text-decoration: none;
+      }
+      .login-box .register a:hover {
+        color: #fff;
+      }
+      .footer {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-box">
+        <h2>LOGIN</h2>
+        <form>
+          <div class="textbox">
+            <i class="fas fa-envelope"></i>
+            <input type="text" placeholder="EMAIL" name="email" />
+          </div>
+          <div class="textbox">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="PASSWORD" name="password" />
+          </div>
+          <div class="options">
+            <label><input type="checkbox" name="remember" /> Remember me</label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <input type="submit" value="LOGIN" />
+          <div class="register">
+            To Register New Account →
+            <a href="/register.component.html">Click Here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
