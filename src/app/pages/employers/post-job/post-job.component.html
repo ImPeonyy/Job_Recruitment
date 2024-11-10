@@ -1,0 +1,66 @@
+<section class="banner-area relative" id="home">	
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Contact Us				
+                </h1>	
+                <p class="text-white"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="contact.html"> Contact Us</a></p>
+            </div>											
+        </div>
+    </div>
+</section>
+
+<section class="contact-page-area section-gap" style="background-color: #ebebeb;">
+    <div class="container" style="background-color: #fff">
+        <div class="row">
+            <div class="col-lg-3 d-flex flex-column" style="margin-top: 50px;">
+                <a class="genric-btn info radius mt-10" style="font-size: large;" href="#">List of Jobs</a>
+                <a class="genric-btn info radius mt-10" style="font-size: large;" href="#">Post New Job</a>
+                <a class="genric-btn info radius mt-10" style="font-size: large;" href="#">Create New Account</a>
+            </div>
+            <div class="col-lg-9" style="margin-top: 50px;">
+                <h2 style="text-align: center;">Post new Job</h2>
+                <form class="form-area " id="myForm" class="contact-form text-right mt-20" (ngSubmit)="post()" #jobForm="ngForm">
+                    <div class="row">	
+                        <div class="col-lg-12 form-group">
+
+                            <input [(ngModel)]="job.title" name="title" placeholder="Title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Title'" class="common-input mb-20 form-control" required="" type="text">
+                        
+                            <select [(ngModel)]="job.company" name="company" placeholder="Company" onfocus="this.placeholder = ''" onblur="this.Option = 'Company'" class="mb-20 form-control" required="">
+                                <option value="" disabled selected>Company</option>
+                                <option *ngFor="let i of $company"[value]="i.ID">{{i.name}}</option>
+                            </select>
+
+                            <select [(ngModel)]="job.location" name="location" placeholder="Location" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Location'" class="common-input mb-20 form-control" required="">
+                                <option value="" disabled selected>Location</option>
+                                <option *ngFor="let i of $location"[value]="i.ID">{{i.name}}</option>
+                            </select>
+
+                            <input [(ngModel)]="job.address" name="address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'" class="common-input mb-20 form-control" required="" type="text">
+
+                            <textarea [(ngModel)]="job.job_des" class="common-textarea mb-20 form-control" name="job_des" placeholder="Job Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Job Description'" required=""></textarea>
+                            
+                            <textarea [(ngModel)]="job.job_req" class="common-textarea mb-20 form-control" name="job_req" placeholder="Job Requirement" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Job Requirement'" required=""></textarea>
+
+                            <input [(ngModel)]="job.date_expired" name="date_expired" placeholder="Date Expired" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Date Expired'" class="common-input mb-20 form-control" required="" type="datetime-local">
+                           
+                            <textarea [(ngModel)]="job.welfare" class="common-textarea mb-20 form-control" name="welfare" placeholder="Welfare" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Welfare'" required=""></textarea>
+
+                            <input [(ngModel)]="job.job_title" name="job_title" placeholder="Job Title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Job Title'" class="common-input mb-20 form-control" required="" type="text">
+
+                            <select [(ngModel)]="job.job_type" name="job_type" placeholder="Job Type" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Job type'" class="common-input mb-20 form-control" required="">
+                                <option value="" disabled selected>Job Type</option>
+                                <option *ngFor="let i of $job_type"[value]="i.ID">{{i.type_name}}</option>
+                            </select>
+                            
+                            <button class="genric-btn primary circle mt-10 large" style="float: right; font-size: large;">Submit</button>
+                            <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                        </div>
+                    </div>
+                </form>	
+            </div>
+        </div>
+    </div>	
+</section>
