@@ -38,6 +38,11 @@ export class JobService {
     return this.http.delete<any>(url, this.httpOptions);
   }
 
+  public getJobIndexDesc(): Observable<any> {
+    const url = `${this.REST_API_SERVER}/Job/GetJobIndexDesc`;
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
   public getCompany(): Observable<any> {
     const url = `${this.REST_API_SERVER}/Company`;
     return this.http.get<any>(url, this.httpOptions);

@@ -9,18 +9,34 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PutJobComponent } from './pages/employers/put-job/put-job.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { JobSearchComponent } from './job-search/job-search.component';
-import { UserManagementComponent } from './user-management/user-management.component';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule, matSelectAnimations} from '@angular/material/select';
+import { MatSidenavModule} from '@angular/material/sidenav'
+import { MatListModule} from '@angular/material/list'
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { ManageJobPostingsComponent } from './pages/manage-job-postings/manage-job-postings.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
-    JobSearchComponent,
-    UserManagementComponent,
     PostJobComponent,
-    PutJobComponent
+    PutJobComponent,
+    ManageJobPostingsComponent,
+    
+    
 
   ],
   imports: [
@@ -28,6 +44,20 @@ import { UserManagementComponent } from './user-management/user-management.compo
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+
+    MatToolbarModule,
+    MatButtonModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatTableModule,
   ],
   providers: [
     provideAnimationsAsync()
