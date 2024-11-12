@@ -1,0 +1,19 @@
+export interface Job_Index {
+    ID: number;
+    title: string;
+    company: number;
+    location: number;
+    address: string;
+    job_des: string;
+    job_req: string;
+    date_expired: Date;
+    welfare: string;
+    job_title: string;
+    job_type: number;
+    name:string;
+    logo: string;
+    min_salary: number;
+    max_salary: number;
+    min_exp: number;
+    max_exp: number;
+}
