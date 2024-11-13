@@ -69,52 +69,50 @@
           <div class="col-lg-3 d-flex flex-column">
             <a class="genric-btn info radius mt-10" href="#">Submit Your CV</a>
             <a class="genric-btn info radius mt-10" href="#">Post New Job</a>
-            <a class="genric-btn info radius mt-10" href="#"
-              >Create New Account</a
-            >
+            <a class="genric-btn info radius mt-10" href="#">Create New Account</a>
           </div>
-          <div class="section-top-border col-lg-9 d-flex flex-column">
+          <div class="col-lg-9 d-flex flex-column">
             
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
 
-    <ng-container matColumnDef="ID">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let i">{{i.ID}}</td>
-    </ng-container>
-  
-    <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef>Title</th>
-        <td mat-cell *matCellDef="let i">{{i.title}}</td>
-    </ng-container>
+                <ng-container matColumnDef="ID">
+                    <th mat-header-cell *matHeaderCellDef>ID</th>
+                    <td mat-cell *matCellDef="let i">{{i.ID}}</td>
+                </ng-container>
+              
+                <ng-container matColumnDef="title">
+                    <th mat-header-cell *matHeaderCellDef>Title</th>
+                    <td mat-cell *matCellDef="let i">{{i.title}}</td>
+                </ng-container>
 
-    <ng-container matColumnDef="action" class="action" style="margin-left: 100px !important;">
-      <th mat-header-cell *matHeaderCellDef> Action </th>
-      <td mat-cell *matCellDef="let i"> 
-          <button mat-icon-button color="primary">
-              <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn">
-              <mat-icon>delete</mat-icon>
-          </button>
-          <button mat-icon-button>
-              <mat-icon>info</mat-icon>
-          </button>
-      </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-        mat-row
-        (click)="clickedRows.add(row)"
-        [class.demo-row-is-clicked]="clickedRows.has(row)"
-        *matRowDef="let row; columns: displayedColumns;"
-    ></tr>
-</table>
-<mat-paginator [length]="100"
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page of emps">
-</mat-paginator>
+                <ng-container matColumnDef="action" class="action" style="margin-left: 100px !important;">
+                  <th mat-header-cell *matHeaderCellDef> Action </th>
+                  <td mat-cell *matCellDef="let i"> 
+                      <button mat-icon-button color="primary" (click)="openPutJobForm(i)">
+                          <mat-icon>edit</mat-icon>
+                      </button>
+                      <button mat-icon-button color="warn">
+                          <mat-icon>delete</mat-icon>
+                      </button>
+                      <button mat-icon-button>
+                          <mat-icon>info</mat-icon>
+                      </button>
+                  </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                    mat-row
+                    (click)="clickedRows.add(row)"
+                    [class.demo-row-is-clicked]="clickedRows.has(row)"
+                    *matRowDef="let row; columns: displayedColumns;"
+                ></tr>
+            </table>
+            <mat-paginator [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page of emps">
+            </mat-paginator>
 
           </div>
         </div>

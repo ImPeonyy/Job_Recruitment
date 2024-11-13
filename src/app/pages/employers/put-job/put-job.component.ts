@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { JobService } from '../../../services/job/job.service';
 import { Job } from '../../../models/job/job';
 import { Company } from '../../../models/company/company';
@@ -10,7 +10,7 @@ import { TypeOfJob } from '../../../models/type_of_job/type-of-job';
   templateUrl: './put-job.component.html',
   styleUrl: './put-job.component.css'
 })
-export class PutJobComponent {
+export class PutJobComponent implements OnInit {
   constructor(private http: JobService) {
 
   }
@@ -20,12 +20,37 @@ export class PutJobComponent {
   public $location: Province[];
   public $job_type: TypeOfJob[];
 
+  ngOnInit() {
+    this.getSelectedJob();
+    this.getSelectInput();
+  }
+
+  getSelectedJob() {
+    this.http.selectedJob$.subscribe(res => {
+      this.job =res;
+    });
+  }
+
+  getSelectInput() {
+    this.http.getCompany().subscribe(res => {
+      this.$company = res;
+    });
+
+    this.http.getLocation().subscribe(res => {
+      this.$location = res;
+    });
+
+    this.http.getTypeofJob().subscribe(res => {
+      this.$job_type = res;
+    });
+  }
+
   put( ): void {
-    this.http.post(this.job).subscribe(
+    this.http.put (this.job).subscribe(
       (res: any) => {
         console.log(this.job);
         console.log(res); // Log the response for debugging
-        alert('Post job successfully!');
+        alert('Put job successfully!');
       },
       (err: any) => {
         console.error('Đã xảy ra lỗi:', err); // Log any errors for debugging
