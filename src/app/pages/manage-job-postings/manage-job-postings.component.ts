@@ -22,12 +22,12 @@ export class ManageJobPostingsComponent implements OnInit {
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  displayedColumns: string[] = ['ID', 'title'];
+  displayedColumns: string[] = ['ID', 'title','min_salary','name','date_expired','action'];
   dataSource = new MatTableDataSource<any>;
   clickedRows = new Set<Job>();
 
   getListJob() {
-    this.http.get().subscribe({
+    this.http.getJobIndexDesc().subscribe({
       next: (res) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;

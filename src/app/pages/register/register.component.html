@@ -52,36 +52,37 @@
     </style>
   </head>
   <body>
-    <div class="register-form">
-      <h2>Register</h2>
-      <div class="input-group">
-        <input type="text" placeholder="User Name" />
-        <i class="fas fa-user"></i>
-      </div>
-      <div class="input-group">
-        <input type="email" placeholder="Email" />
-        <i class="fas fa-envelope"></i>
-      </div>
-      <div class="input-group">
-        <input type="email" placeholder="PhoneNumer" />
-        <i class="fas fa-phone"></i>
-      </div>
-      <div class="input-group">
-        <input type="password" placeholder="Password" />
-        <i class="fas fa-lock"></i>
-      </div>
-      <div class="input-group">
-        <input type="password" placeholder="Confirm Password" />
-        <i class="fas fa-lock"></i>
-      </div>
-      <div class="switch-wrap d-flex justify-content-between">
-        <p>I Accept Terms & Conditions</p>
-        <div class="primary-checkbox">
-          <input type="checkbox" id="primary-checkbox" checked />
-          <label for="primary-checkbox"></label>
+   
+      <div class="register-form">
+        <h2>Register</h2>
+        <div class="input-group">
+          <input type="text" placeholder="User Name"  [(ngModel)]="account.username"/>
+          <i class="fas fa-user"></i>
         </div>
+        <div class="input-group">
+          <input type="email" placeholder="Email" [(ngModel)]="account.email"/>
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="input-group">
+          <input type="phone_number" placeholder="PhoneNumer" [(ngModel)]="account.phone_number" />
+          <i class="fas fa-phone"></i>
+        </div>
+        <div class="input-group">
+          <input type="name" placeholder="Name" [(ngModel)]="account.name" />
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="input-group">
+          <input type="password" placeholder="Password" [(ngModel)]="account.password" />
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="input-group">
+          <input type="password" placeholder="Confirm Password" [(ngModel)]="confirm_password" />
+          <i class="fas fa-lock"></i>
+        </div>
+        
+        <button  class="genric-btn primary radius" (click)="onRegister()">Register</button>
       </div>
-      <a href="#" class="genric-btn primary radius">Register</a>
-    </div>
+    
+    
   </body>
 </html>
