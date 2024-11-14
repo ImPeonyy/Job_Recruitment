@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PutJobComponent } from './pages/employers/put-job/put-job.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -34,7 +37,8 @@ import { ManageJobPostingsComponent } from './pages/manage-job-postings/manage-j
     PostJobComponent,
     PutJobComponent,
     ManageJobPostingsComponent,
-
+    RegisterComponent,
+    LoginComponent
     
 
   ],
@@ -43,7 +47,7 @@ import { ManageJobPostingsComponent } from './pages/manage-job-postings/manage-j
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-
+    ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
     MatPaginatorModule,
@@ -57,6 +61,8 @@ import { ManageJobPostingsComponent } from './pages/manage-job-postings/manage-j
     MatNativeDateModule,
     MatIconModule,
     MatTableModule,
+  
+  
   ],
   providers: [
     provideAnimationsAsync()

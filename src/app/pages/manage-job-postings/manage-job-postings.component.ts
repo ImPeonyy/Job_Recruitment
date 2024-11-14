@@ -23,8 +23,9 @@ export class ManageJobPostingsComponent implements OnInit {
   }
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+  displayedColumns: string[] = ['ID', 'title','min_salary','name','date_expired','action'];
 
-  displayedColumns: string[] = ['ID', 'title', 'action'];
   dataSource = new MatTableDataSource<any>;
   clickedRows = new Set<Job>();
 
@@ -33,7 +34,7 @@ export class ManageJobPostingsComponent implements OnInit {
   }
 
   getListJob() {
-    this.http.get().subscribe({
+    this.http.getJobIndexDesc().subscribe({
       next: (res) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
