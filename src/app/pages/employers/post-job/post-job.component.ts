@@ -23,17 +23,7 @@ export class PostJobComponent implements OnInit {
 
   ngOnInit() {
     this.initializeEmployee();
-    this.http.getCompany().subscribe(res => {
-      this.$company = res;
-    });
-
-    this.http.getLocation().subscribe(res => {
-      this.$location = res;
-    });
-
-    this.http.getTypeofJob().subscribe(res => {
-      this.$job_type = res;
-    });
+    this.getSelectInput();
   }
 
   initializeEmployee() {
@@ -50,6 +40,20 @@ export class PostJobComponent implements OnInit {
       job_title: '',
       job_type: null
     };
+  }
+
+  getSelectInput() {
+    this.http.getCompany().subscribe(res => {
+      this.$company = res;
+    });
+
+    this.http.getLocation().subscribe(res => {
+      this.$location = res;
+    });
+
+    this.http.getTypeofJob().subscribe(res => {
+      this.$job_type = res;
+    });
   }
 
   post( ): void {
