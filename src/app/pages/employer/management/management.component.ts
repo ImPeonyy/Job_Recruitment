@@ -1,18 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { Job } from '../../models/job/job';
-import { JobService } from '../../services/job/job.service';
-import { MatPaginator } from '@angular/material/paginator';
+import { JobService } from '../../../services/job/job.service';
 import { MatDialog } from '@angular/material/dialog';
-import { PutJobComponent } from '../employer/put-job/put-job.component';
-
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Job } from '../../../models/job/job';
+import { PutJobComponent } from '../put-job/put-job.component';
 
 @Component({
-  selector: 'app-manage-job-postings',
-  templateUrl: './manage-job-postings.component.html',
-  styleUrl: './manage-job-postings.component.css'
+  selector: 'app-management',
+  templateUrl: './management.component.html',
+  styleUrl: './management.component.css'
 })
-export class ManageJobPostingsComponent implements OnInit {
+export class ManagementComponent implements OnInit {
 
   constructor(private http: JobService, private dialogRef: MatDialog) {
 

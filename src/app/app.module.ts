@@ -5,10 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsMod
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './pages/index/index.component';
-import { PostJobComponent } from './pages/employers/post-job/post-job.component';
+import { PostJobComponent } from './pages/employer/post-job/post-job.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { PutJobComponent } from './pages/employers/put-job/put-job.component';
+import { PutJobComponent } from './pages/employer/put-job/put-job.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -27,6 +27,8 @@ import { MatListModule} from '@angular/material/list'
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ManageJobPostingsComponent } from './pages/manage-job-postings/manage-job-postings.component';
+import { JobComponent } from './pages/admin/job/job.component';
+import { ManagementComponent } from './pages/employer/management/management.component';
 
 import { JobSearchComponent } from './pages/job-search/job-search.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
@@ -41,8 +43,10 @@ import { UserManagementComponent } from './pages/user-management/user-management
     JobSearchComponent,
     UserManagementComponent
     RegisterComponent,
-    LoginComponent
-
+    LoginComponent,
+    JobComponent,
+    ManagementComponent,
+    
   ],
   imports: [
     BrowserModule,
