@@ -28,7 +28,8 @@ import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ManageJobPostingsComponent } from './pages/manage-job-postings/manage-job-postings.component';
 
-
+import { JobSearchComponent } from './pages/job-search/job-search.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +38,10 @@ import { ManageJobPostingsComponent } from './pages/manage-job-postings/manage-j
     PostJobComponent,
     PutJobComponent,
     ManageJobPostingsComponent,
+    JobSearchComponent,
+    UserManagementComponent
     RegisterComponent,
     LoginComponent
-    
 
   ],
   imports: [
