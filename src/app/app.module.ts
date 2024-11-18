@@ -30,7 +30,8 @@ import { ManageJobPostingsComponent } from './pages/manage-job-postings/manage-j
 import { JobComponent } from './pages/admin/job/job.component';
 import { ManagementComponent } from './pages/employer/management/management.component';
 
-
+import { JobSearchComponent } from './pages/job-search/job-search.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +40,13 @@ import { ManagementComponent } from './pages/employer/management/management.comp
     PostJobComponent,
     PutJobComponent,
     ManageJobPostingsComponent,
+    JobSearchComponent,
+    UserManagementComponent
     RegisterComponent,
     LoginComponent,
     JobComponent,
     ManagementComponent,
+    
   ],
   imports: [
     BrowserModule,

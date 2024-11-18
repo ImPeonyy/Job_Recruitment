@@ -1,101 +1,159 @@
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
-<body>
 <!-- start banner Area -->
 <section class="banner-area relative" id="home">	
     <div class="overlay overlay-bg"></div>
     <div class="container">
-        <div class="row search-page-top d-flex align-items-center justify-content-center">
+        <!-- <div class="row search-page-top d-flex align-items-center justify-content-center"> -->
             <div class="banner-content col-lg-12">
+                <div >
+                    <br><br><br><br><br><br><br>
+                </div>
                 <h1 class="text-white">
-                   Job Category				
+                   Job Category 
                 </h1>
-                <p class="text-white link-nav">
-                    <a href="index.html">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="search.html"> Job details page</a>
-                </p>	
+                	
                 <form action="#" class="serach-form-area">
                     <div class="row justify-content-center form-wrap">
                         <div class="col-lg-4 form-cols">
-                            <input type="text" class="form-control" name="search" placeholder="Enter the job you want to find">
+                            <input type="text" class="form-control" name="jobSearch" placeholder="Enter the job you want to find" [(ngModel)]="keyword">
                         </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects">
-                                <select>
-                                    <option value="1">Select area</option>
-                                    <option value="2">Dhaka</option>
-                                    <option value="3">Rajshahi</option>
-                                    <option value="4">Barishal</option>
-                                    <option value="5">Noakhali</option>
+
+                        <div class="col-lg-3 form-cols" > 
+                            <div class="default-select">   
+                                <select  name="address" [(ngModel)]="keywordaddress"  class="common-input mb-20 form-control" >
+                                     <option value="">Select address</option> 
+                                    <option *ngFor="let i of DSDiaChi" [value]="i">{{i}}</option>
+                                
                                 </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects2">
-                                <select>
-                                    <option value="1">All Category</option>
-                                    <option value="2">Medical</option>
-                                    <option value="3">Technology</option>
-                                    <option value="4">Goverment</option>
-                                    <option value="5">Development</option>
+                             </div> 
+                         </div>
+
+                         <div class="col-lg-3 form-cols" > 
+                            <div class="default-select">   
+                                <select  name="Company" [(ngModel)]="keywordCompany"  class="common-input mb-20 form-control" >
+                                     <option value="">Select Company</option> 
+                                    <option *ngFor="let i of DSTenCongTy" [value]="i">{{i}}</option>
+                                
                                 </select>
-                            </div>										
+                             </div> 
                         </div>
-                        <div class="col-lg-2 form-cols">
-                            <button type="button" class="btn btn-info">
-                              <span class="lnr lnr-magnifier"></span> Search
-                            </button>
-                        </div>								
+                       <div class="col-lg-2 form-cols"> 
+                            <button type="button" class="btn btn-info" (click)="timKiemJob()"> Search  </button>
+                         </div>			
+                          <!-- Thêm đoạn này để hiển thị thông báo -->
+                            <p *ngIf="message" class="text-white">{{ message }}</p>			
+                            		
                     </div>
-                </form>	
-                <p class="text-white">49 Results found for <span>"Web developer"</span></p>
+               </form>	
+
+           
+               <!-- lua Job chon -->   
+            <div class="row justify-content-center form-wrap">        
+               <div class="col-lg-3 form-cols" > 
+                 <div class="default-select" >   
+                    <select  name="Job-type" class="common-input mb-20 form-control" [(ngModel)]="keywordJobtype" (change)="ChonJobType()">
+                         <option value="">Select Job type</option> 
+                        <option *ngFor="let i of DSDLJobType" [value]="i">{{i}}</option>              
+                    </select>                   
+                 </div>     
+                </div>
+          
+                <div class="col-lg-3 form-cols" > 
+                    <div class="default-select" >   
+                       <select  name="salary" class="common-input mb-20 form-control"  [(ngModel)]="keywordSalary" (change)="ChonSalary()">
+                            <option value="">Select salary</option > 
+                            <option value="1-4">1$ -> 4$</option>
+                            <option value="4-8">4$ -> 8$</option>       
+                            <option value="8-10">8$ -> 10$</option> 
+                            <option value="10-15">10$ -> 15$</option> 
+                            <option value="15-20">15$ -> 20$</option>    
+                            <option value="20-more">20$ or more</option>     
+                       </select>                   
+                    </div>     
+                   </div>
+
+                   <div class="col-lg-3 form-cols" > 
+                    <div class="default-select" >   
+                       <select  name="salary" class="common-input mb-20 form-control"  [(ngModel)]="keywordEXP" (change)="ChonEXP()">
+                            <option value="">Select years of exp</option >
+                            <option value="0">no experience yet</option>  
+                            <option value="1-2">1 - 2 years</option>
+                            <option value="2-3">2 - 3 years</option>       
+                            <option value="3-4">3 - 4 years</option> 
+                            <option value="4-5">4 - 5 years</option>  
+                            <option value="5-more">5 years or more</option>     
+                       </select>                   
+                    </div>     
+                   </div>
+
+                   <div class="col-lg-3 form-cols" > 
+                    <div class="default-select" >   
+                       <select  name="Job-type" class="common-input mb-20 form-control" [(ngModel)]="keywordjobtitle" (change)="Chonjobtitle()">
+                            <option value="">Select job title</option> 
+                           <option *ngFor="let i of DSDLjobtitle" [value]="i">{{i}}</option>              
+                       </select>                   
+                    </div>     
+                   </div>
+                   
+            </div>
+                
+                <!-- lua Job chon  -->
+
+
+
+                
+
             </div>											
-        </div>
+        <!-- </div> -->
     </div>
 </section>
 <!-- End banner Area -->		
 
-<!-- Start post Area -->
-<section class="post-area section-gap">
+ <!-- Start post Area -->
+<section class="post-area section-gap" >
     <div class="container">
         <div class="row justify-content-center d-flex">
-            <div class="col-lg-8 post-list">
-                <div class="single-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="img/post.png" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>					
-                            </li>
-                        </ul>
+            <!-- bảng job -->
+            <div class="col-lg-8 post-list" >
+                <div class="single-post d-flex flex-row" *ngFor="let i of DSJob">
+                    <div class="thumb" >
+                        <img [src]="imageUrl" alt="Logo" class="common-input mb-20 form-control" width="50" height="100px"  >
                     </div>
                     <div class="details">
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
-                                <a href="single.html"><h4>Creative Art Designer</h4></a>
-                                <h6>Premium Labels Limited</h6>					
+                                <a href=""><h4>{{i.title}}</h4></a>
+                                <h6>{{i.CompanyName}}</h6>					
                             </div>
                             <ul class="btns">
-                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
                                 <li><a href="#">Apply</a></li>
                             </ul>
                         </div>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+                           {{i.JobDescription}}
                         </p>
-                        <h5>Job Nature: Full time</h5>
-                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                         <h5>{{i.JobTitleDescription}}</h5>
+                        <p class="address">
+                            <span class="lnr lnr-database"></span> {{i.MinSalary}}$ - {{i.MaxSalary}}$ 
+                            <span class="lnr lnr-map" style="margin-left: 50px;"></span> {{i.address}}
+                        </p>
+                        <!-- <p class="address" style="display: inline-block;">
+                            <span class="lnr lnr-database"></span>{{i.MinSalary}}$ - {{i.MaxSalary}}$ 
+                           
+                        </p> -->
+                    
                     </div>
                 </div>		
             </div>
-            <div class="col-lg-4 sidebar">
 
+
+
+
+
+
+
+
+            <!-- bảng job -->
+            <div class="col-lg-4 sidebar">
                 <div class="single-slidebar">
                     <h4>Jobs by Location</h4>
                     <ul class="cat-list">
@@ -125,7 +183,6 @@
             </div>
         </div>
     </div>	
-</section>
+</section> 
 <!-- End post Area -->
-</body>
-</html>
+
