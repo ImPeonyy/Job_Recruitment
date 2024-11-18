@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PutJobComponent } from './pages/employers/put-job/put-job.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,6 +40,8 @@ import { UserManagementComponent } from './pages/user-management/user-management
     ManageJobPostingsComponent,
     JobSearchComponent,
     UserManagementComponent
+    RegisterComponent,
+    LoginComponent
 
   ],
   imports: [
@@ -44,7 +49,7 @@ import { UserManagementComponent } from './pages/user-management/user-management
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-
+    ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
     MatPaginatorModule,
@@ -58,6 +63,8 @@ import { UserManagementComponent } from './pages/user-management/user-management
     MatNativeDateModule,
     MatIconModule,
     MatTableModule,
+  
+  
   ],
   providers: [
     provideAnimationsAsync()
