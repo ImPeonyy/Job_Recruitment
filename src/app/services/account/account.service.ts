@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Account } from '../../models/account/account';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ export class AccountService {
   };
     constructor(private http: HttpClient) { }
 
-    public get(account: Account): Observable<any> {
+    public get(): Observable<any> {
       const url = `${this.REST_API_SERVER}/Account`;
       return this.http.get<any>(url, this.httpOptions);
     }
@@ -35,8 +34,8 @@ export class AccountService {
       return this.http.delete<any>(url, this.httpOptions);
     }
 
-    public getAccByEmail(email: string): Observable<any> {
-      const url = `${this.REST_API_SERVER}/Account/GetAccByEmail?email=${email}`;
+    public getAccByUn(id: string): Observable<any> {
+      const url = `${this.REST_API_SERVER}/Account/GetAccByUn`;
       return this.http.get<any>(url, this.httpOptions);
     }
 

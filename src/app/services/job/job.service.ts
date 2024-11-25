@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Job } from '../../models/job/job';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +18,6 @@ export class JobService {
 
   }
 
-  public selectedJob$ = new BehaviorSubject<Job>(null);
-
   public get(): Observable<any> {
     const url = `${this.REST_API_SERVER}/Job`;
     return this.http.get<any>(url, this.httpOptions);
@@ -36,7 +33,7 @@ export class JobService {
     return this.http.put<any>(url, body, this.httpOptions);
   }
 
-  public delete(id: number): Observable<any> {
+  public delete(id): Observable<any> {
     const url = `${this.REST_API_SERVER}/Job/${id}`;
     return this.http.delete<any>(url, this.httpOptions);
   }
@@ -66,7 +63,7 @@ export class JobService {
     const url = `${this.REST_API_SERVER}/Job/GetJobTypeDesc`;
     return this.http.get<any>(url, this.httpOptions);
   }
-  
+
   public getLocationDesc(): Observable<any> {
     const url = `${this.REST_API_SERVER}/Job/GetLocationDesc`;
     return this.http.get<any>(url, this.httpOptions);
