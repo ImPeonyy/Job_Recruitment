@@ -4,6 +4,7 @@ import { Job } from '../../../models/job/job';
 import { Company } from '../../../models/company/company';
 import { Province } from '../../../models/province/province';
 import { TypeOfJob } from '../../../models/type_of_job/type-of-job';
+import { CloudsService } from '../../../services/clouds/clouds.service';
 
 @Component({
   selector: 'app-put-job',
@@ -11,7 +12,7 @@ import { TypeOfJob } from '../../../models/type_of_job/type-of-job';
   styleUrl: './put-job.component.css'
 })
 export class PutJobComponent implements OnInit {
-  constructor(private http: JobService) {
+  constructor(private js: JobService, private cls: CloudsService) {
 
   }
 
@@ -21,32 +22,29 @@ export class PutJobComponent implements OnInit {
   public $job_type: TypeOfJob[];
 
   ngOnInit() {
-    this.getSelectedJob();
+    this.cls.selectedJob$.subscribe(res => {
+      this.job = res;
+    })
+
     this.getSelectInput();
   }
 
-  getSelectedJob() {
-    this.http.selectedJob$.subscribe(res => {
-      this.job =res;
-    });
-  }
-
   getSelectInput() {
-    this.http.getCompany().subscribe(res => {
+    this.js.getCompany().subscribe(res => {
       this.$company = res;
     });
 
-    this.http.getLocation().subscribe(res => {
+    this.js.getLocation().subscribe(res => {
       this.$location = res;
     });
 
-    this.http.getTypeofJob().subscribe(res => {
+    this.js.getTypeofJob().subscribe(res => {
       this.$job_type = res;
     });
   }
 
   put( ): void {
-    this.http.put (this.job).subscribe(
+    this.js.put (this.job).subscribe(
       (res: any) => {
         console.log(this.job);
         console.log(res); // Log the response for debugging

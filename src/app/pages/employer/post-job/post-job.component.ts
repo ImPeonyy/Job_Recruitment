@@ -22,11 +22,11 @@ export class PostJobComponent implements OnInit {
   public $job_type: TypeOfJob[];
 
   ngOnInit() {
-    this.initializeEmployee();
+    this.initializeJob();
     this.getSelectInput();
   }
 
-  initializeEmployee() {
+  initializeJob() {
     this.job = {
       ID : 0,
       title: '',
@@ -38,7 +38,8 @@ export class PostJobComponent implements OnInit {
       date_expired: null,
       welfare: '',
       job_title: '',
-      job_type: null
+      job_type: null,
+      state: 0
     };
   }
 
@@ -61,7 +62,7 @@ export class PostJobComponent implements OnInit {
       (res: any) => {
         console.log(this.job);
         console.log(res); // Log the response for debugging
-        this.initializeEmployee();
+        this.initializeJob();
         alert('Post job successfully!');
       },
       (err: any) => {

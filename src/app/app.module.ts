@@ -1,18 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { IndexComponent } from './pages/index/index.component';
-import { PostJobComponent } from './pages/employer/post-job/post-job.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { PutJobComponent } from './pages/employer/put-job/put-job.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { RegisterComponent } from './pages/register/register.component';
-import { LoginComponent } from './pages/login/login.component';
 
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,17 +13,30 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule, matSelectAnimations} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule} from '@angular/material/sidenav'
 import { MatListModule} from '@angular/material/list'
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import {MatRadioModule} from '@angular/material/radio';
+
+import { AppComponent } from './app.component';
+import { IndexComponent } from './pages/index/index.component';
+import { PostJobComponent } from './pages/employer/post-job/post-job.component';
+import { PutJobComponent } from './pages/employer/put-job/put-job.component';
 import { ManageJobPostingsComponent } from './pages/manage-job-postings/manage-job-postings.component';
 import { JobComponent } from './pages/admin/job/job.component';
 import { ManagementComponent } from './pages/employer/management/management.component';
-
 import { JobSearchComponent } from './pages/job-search/job-search.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { PostJobValueComponent } from './pages/employer/post-job-value/post-job-value.component';
+import { PutJobValueComponent } from './pages/employer/put-job-value/put-job-value.component';
+import { TestComponent } from './test/test.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+
 
 @NgModule({
   declarations: [
@@ -41,11 +46,13 @@ import { UserManagementComponent } from './pages/user-management/user-management
     PutJobComponent,
     ManageJobPostingsComponent,
     JobSearchComponent,
-    UserManagementComponent
-    RegisterComponent,
-    LoginComponent,
+    UserManagementComponent,
     JobComponent,
     ManagementComponent,
+    PostJobValueComponent,
+    PutJobValueComponent,
+    TestComponent,
+    SignInComponent,
     
   ],
   imports: [
@@ -54,6 +61,7 @@ import { UserManagementComponent } from './pages/user-management/user-management
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+
     MatToolbarModule,
     MatButtonModule,
     MatPaginatorModule,
@@ -67,6 +75,10 @@ import { UserManagementComponent } from './pages/user-management/user-management
     MatNativeDateModule,
     MatIconModule,
     MatTableModule,
+    MatSort,
+    MatSortModule,
+    MatRadioModule,
+    MatCheckboxModule
   
   
   ],
