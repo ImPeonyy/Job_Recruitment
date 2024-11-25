@@ -21,6 +21,7 @@ export class ManageJobPostingsComponent implements OnInit {
 
   ngOnInit() {
     this.getListJob();
+    this.loadJobs();
   }
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -51,5 +52,46 @@ export class ManageJobPostingsComponent implements OnInit {
     console.log(this.getSelectedJob(job));
     // console.log(emp);
     
+  }
+
+  loadJobs(): void {
+    this.js.get().subscribe(
+      (data) => {
+        this.dataSource.data = data;
+      },
+      (error) => {
+        console.error('Error loading jobs:', error);
+      }
+    );
+  }
+
+  approveJob(job: any): void {
+    const updatedJob = { ...job, status: 'Approved' }; // Update job status
+    this.http.put(updatedJob).subscribe(
+      () => {
+        this.snackBar.open('Job approved successfully!', 'Close', { duration: 3000 });
+        this.loadJobs();
+      },
+      (error) => {
+        console.error('Error approving job:', error);
+        this.snackBar.open('Failed to approve job!', 'Close', { duration: 3000 });
+      }
+    );
+  }
+
+  deleteJob(job: any): void {
+    const confirmDelete = window.confirm(`Are you sure you want to delete the job with ID: ${job.ID}?`);
+    if (confirmDelete) {
+      this.http.delete(job.ID).subscribe(
+        (response) => {
+          this.snackBar.open(response || 'Job deleted successfully!', 'Close', { duration: 3000 });
+          this.loadJobs(); // Refresh the job list
+        },
+        (error) => {
+          console.error('Error deleting job:', error);
+          this.snackBar.open('Failed to delete job!', 'Close', { duration: 3000 });
+        }
+      );
+    }
   }
 }
