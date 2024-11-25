@@ -3,4 +3,5 @@ export interface Enrolment {
     job: number;
     account: number;
     CV: string;
+    state: number;
 }

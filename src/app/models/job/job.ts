@@ -10,4 +10,5 @@ export interface Job {
     welfare: string;
     job_title: string;
     job_type: number;
+    state: number;
 }

@@ -1,0 +1,76 @@
+
+<div class="parent"> 
+    <div class="container" [ngClass]="isSignDivVisiable ? 'active' :'' " id="container">
+        <div class="form-container sign-up" >
+            <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+                <h3>Sign Up</h3>
+            
+                <mat-radio-group formControlName="role" aria-label="Select an option" [(ngModel)]="account.role">
+                    <mat-radio-button [value]="1" style="margin-right: 50px;">Employee</mat-radio-button>
+                    <mat-radio-button [value]="-1">Employer</mat-radio-button>
+                </mat-radio-group>
+            
+                <input type="text" formControlName="name" placeholder="Name" class="form-control" required [(ngModel)]="account.name">
+                <div *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched" class="error-message">
+                    Name is required (min. 3 characters).
+                </div>
+            
+                <input type="email" formControlName="email" placeholder="Email" required [(ngModel)]="account.email">
+                <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched" class="error-message">
+                    Please enter a valid email.
+                </div>
+                <div *ngIf="signUpForm.controls['email'].hasError('emailExist')" class="error-message">
+                    Email is already exist.
+                </div>
+            
+                <input type="password" formControlName="password" placeholder="Password" required [(ngModel)]="account.password">
+                <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched" class="error-message">
+                    Password is required (min. 6 characters).
+                </div>
+            
+                <input type="password" formControlName="confirm_password" placeholder="Confirm Password" required [(ngModel)]="confirm_password">
+                <div *ngIf="signUpForm.get('confirm_password')?.invalid && signUpForm.get('confirm_password')?.touched" class="error-message">
+                    Confirm Password is required.
+                </div>
+                <div *ngIf="signUpForm.errors?.mismatch && signUpForm.get('confirm_password')?.touched" class="error-message">
+                    Passwords do not match.
+                </div>
+            
+                <input type="text" formControlName="phone_number" placeholder="Phone Number" required [(ngModel)]="account.phone_number">
+                <div *ngIf="signUpForm.get('phone_number')?.invalid && signUpForm.get('phone_number')?.touched" class="error-message">
+                    Please enter a valid 10-digit phone number.
+                </div>
+                <div *ngIf="signUpForm.get('phone_number')?.hasError('phoneExists')">
+                    <small class="error-text">Phone number already exists</small>
+                </div>
+            
+                <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
+            </form>
+            
+        </div>
+        <div class="form-container sign-in" >
+            <form>
+                <h3>Sign In</h3>
+                <input type="email" name="email" [(ngModel)]="account.email" placeholder="Email" required email>
+                <input type="password" name="password"   [(ngModel)]="account.password" placeholder="Password">
+                <a href="#">→ Forget Your Password? ←</a>
+                <button (click)="onSignIn()">Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h3>Welcome Back!</h3>
+                    <p>Enter your personal details to use all of site features</p>                     
+                    <button type="button" class="hidden" id="login" (click)="isSignDivVisiable = false">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h3>Hello, Friend!</h3>
+                    <p>Register with your personal details to use all of site features</p>
+                    <button type="button" class="hidden" id="register" (click)="isSignDivVisiable = true">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

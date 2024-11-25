@@ -16,4 +16,5 @@ export interface Job_Index {
     max_salary: number;
     min_exp: number;
     max_exp: number;
+    state: number;
 }
