@@ -74,7 +74,39 @@ export class SignInComponent implements OnInit{
   }
 
   onSignIn() {
-    
-    
+    if (!this.account.email || !this.account.password) {
+      alert('Please enter both email and password!');
+      return;
+    }
+    this.as.getAccByEmail(this.account.email).subscribe(
+      (response: any) => {
+        if (response && response.length > 0) {
+          const user = response[0]; 
+          if (user.password === this.account.password) {
+            
+            localStorage.setItem('user', JSON.stringify(user));
+  
+            if (user.role == 0) {
+              alert('Welcome Admin!');
+              this.router.navigate(['index']);
+            } else if (user.role == 1) {
+              alert('Welcome User!');
+              this.router.navigate(['index']);
+            } else {
+              alert('Invalid role. Please contact support.');
+            }
+          } else {
+            alert('Invalid password!');
+          }
+        } else {
+        
+          alert('Email does not exist!');
+        }
+      },
+      (error) => {
+        console.error(error);
+        alert('Login failed. Please try again later.');
+      }
+    );
   }
 }
