@@ -1,141 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+    </head>
 
-  <body>
-    <!-- start banner Area -->
-    <section class="banner-area relative" id="home">
-      <div class="overlay overlay-bg"></div>
-      <div class="container">
-        <div class="row d-flex align-items-center justify-content-center">
-          <div class="about-content col-lg-12">
-            <h1 class="text-white">Manager Job Posting</h1>
-            <p class="text-white">
-              <a href="index.html">Home </a>
-              <span class="lnr lnr-arrow-right"></span>
-              <a href="contact.html"> Manager Job Posting</a>
-            </p>
-          </div>
-          <div class="row justify-content-center form-wrap">
-            <div class="col-lg-4 form-cols">
-              <input
-                type="text"
-                class="form-control"
-                name="search"
-                placeholder="what are you looging for?"
-              />
+    <body>
+      <!-- start banner Area -->
+      <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+              <h1 class="text-white">Manager Job Posting</h1>
+              <p class="text-white">
+                <a href="index.html">Home </a>
+                <span class="lnr lnr-arrow-right"></span>
+                <a href="contact.html"> Manager Job Posting</a>
+              </p>
             </div>
-            <div class="col-lg-3 form-cols">
-              <div class="default-select" id="default-selects">
-                <select>
-                  <option value="1">Company</option>
-                  <option value="2">PFT</option>
-                  <option value="3">NCC</option>
-                  <option value="4">Fuijnet</option>
-                  <option value="5">TMA</option>
-                </select>
+            <div class="row justify-content-center form-wrap">
+              <div class="col-lg-4 form-cols">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="search"
+                  placeholder="what are you looging for?"
+                />
               </div>
-            </div>
-            <div class="col-lg-3 form-cols">
-              <div class="default-select" id="default-selects2">
-                <select>
-                  <option value="1">All Category</option>
-                  <option value="2">Medical</option>
-                  <option value="3">Technology</option>
-                  <option value="4">Goverment</option>
-                  <option value="5">Development</option>
-                </select>
+              <div class="col-lg-3 form-cols">
+                <div class="default-select" id="default-selects">
+                  <select>
+                    <option value="1">Company</option>
+                    <option value="2">PFT</option>
+                    <option value="3">NCC</option>
+                    <option value="4">Fuijnet</option>
+                    <option value="5">TMA</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="col-lg-2 form-cols">
-              <button type="button" class="btn btn-info">
-                <span class="lnr lnr-magnifier"></span> Search
-              </button>
+              <div class="col-lg-3 form-cols">
+                <div class="default-select" id="default-selects2">
+                  <select>
+                    <option value="1">All Category</option>
+                    <option value="2">Medical</option>
+                    <option value="3">Technology</option>
+                    <option value="4">Goverment</option>
+                    <option value="5">Development</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-2 form-cols">
+                <button type="button" class="btn btn-info">
+                  <span class="lnr lnr-magnifier"></span> Search
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!-- End banner Area --> 
+      </section>
+      <!-- End banner Area --> 
 
-    <!-- Start contact-page Area -->
-    <section class="contact-page-area section-gap">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 d-flex flex-column">
-            <a class="genric-btn info radius mt-10" href="#">Submit Your CV</a>
-            <a class="genric-btn info radius mt-10" href="#">Post New Job</a>
-            <a class="genric-btn info radius mt-10" href="#"
-              >Create New Account</a
-            >
-          </div>
-          <div class="section-top-border col-lg-9 d-flex flex-column">
-            
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+      <!-- Start contact-page Area -->
+      <section class="contact-page-area section-gap">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 d-flex flex-column">
+              <a class="genric-btn info radius mt-10" href="#">Submit Your CV</a>
+              <a class="genric-btn info radius mt-10" href="#">Post New Job</a>
+              <a class="genric-btn info radius mt-10" href="#"
+                >Create New Account</a
+              >
+            </div>
+            <div class="section-top-border col-lg-9 d-flex flex-column">
+              
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
 
-    <ng-container matColumnDef="ID">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let i">{{i.ID}}</td>
-    </ng-container>
-  
-    <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef>Title</th>
-        <td mat-cell *matCellDef="let i">{{i.title}}</td>
-    </ng-container>
+      <ng-container matColumnDef="ID">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let i">{{i.ID}}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef="let i">{{i.title}}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="min_salary">
-      <th mat-header-cell *matHeaderCellDef>Salary</th>
-      <td mat-cell *matCellDef="let i">{{i.min_salary}}</td>
-    </ng-container>
+      <ng-container matColumnDef="min_salary">
+        <th mat-header-cell *matHeaderCellDef>Salary</th>
+        <td mat-cell *matCellDef="let i">{{i.min_salary}}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Company</th>
-      <td mat-cell *matCellDef="let i">{{i.name}}</td>
-    </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Company</th>
+        <td mat-cell *matCellDef="let i">{{i.name}}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="date_expired">
-      <th mat-header-cell *matHeaderCellDef>Date Expired</th>
-      <td mat-cell *matCellDef="let i">{{i.date_expired}}</td>
-    </ng-container>
+      <ng-container matColumnDef="date_expired">
+        <th mat-header-cell *matHeaderCellDef>Date Expired</th>
+        <td mat-cell *matCellDef="let i">{{i.date_expired}}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="action" class="action" style="margin-left: 100px !important;">
-      <th mat-header-cell *matHeaderCellDef> Action </th>
-      <td mat-cell *matCellDef="let i"> 
-          <button mat-icon-button color="primary">
-              <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn">
-              <mat-icon>delete</mat-icon>
-          </button>
-          <button mat-icon-button>
-              <mat-icon>info</mat-icon>
-          </button>
-      </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-        mat-row
-        (click)="clickedRows.add(row)"
-        [class.demo-row-is-clicked]="clickedRows.has(row)"
-        *matRowDef="let row; columns: displayedColumns;"
-    ></tr>
-</table>
-<mat-paginator [length]="100"
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page of emps">
-</mat-paginator>
+      <ng-container matColumnDef="action" class="action" style="margin-left: 100px !important;">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let i"> 
+            <button mat-icon-button color="primary" (click)="approveJob(i)"
+            matTooltip="Approve this job"
+            aria-label="Approve Job">
+                <mat-icon>Duyệt</mat-icon>
+            </button>
+            <button mat-icon-button color="warn"  (click)="deleteJob(i)"
+            matTooltip="Delete this job"
+            aria-label="Delete Job">
+                <mat-icon>Xóa</mat-icon>
+            </button>
+          
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+          mat-row
+          (click)="clickedRows.add(row)"
+          [class.demo-row-is-clicked]="clickedRows.has(row)"
+          *matRowDef="let row; columns: displayedColumns;"
+      ></tr>
+  </table>
+  <mat-paginator [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of emps">
+  </mat-paginator>
 
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- End contact-page Area -->
-  </body>
-</html>
+      <!-- End contact-page Area -->
+    </body>
+  </html>
