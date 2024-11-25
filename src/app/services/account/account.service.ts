@@ -34,8 +34,8 @@ export class AccountService {
       return this.http.delete<any>(url, this.httpOptions);
     }
 
-    public getAccByUn(id: string): Observable<any> {
-      const url = `${this.REST_API_SERVER}/Account/GetAccByUn`;
+    public getAccByEmail(email: string): Observable<any> {
+      const url = `${this.REST_API_SERVER}/Account/GetAccByEmail?email=${email}`;
       return this.http.get<any>(url, this.httpOptions);
     }
 
