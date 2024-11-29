@@ -46,14 +46,11 @@ export class PutJobComponent implements OnInit {
   put( ): void {
     this.js.put (this.job).subscribe(
       (res: any) => {
-        console.log(this.job);
-        console.log(res); // Log the response for debugging
-        alert('Put job successfully!');
+        location.reload();
       },
       (err: any) => {
         console.error('Đã xảy ra lỗi:', err); // Log any errors for debugging
-        alert('Post job fail!');
-        console.log(this.job);
+        location.reload();
       }
     );
   }

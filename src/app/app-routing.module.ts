@@ -7,18 +7,19 @@ import { ManagementComponent } from './pages/employer/management/management.comp
 import { JobSearchComponent } from './pages/job-search/job-search.component';
 import { TestComponent } from './test/test.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { PostCompanyComponent } from './pages/post-company/post-company.component';
 
 const routes: Routes = [
-  {path: 'index', component: IndexComponent},
+  {path: '', component: IndexComponent},
   {path: 'job', component: JobComponent},
   {path: 'search', component: JobSearchComponent},
   {path: 'test', component: TestComponent},
   {path: 'sign-in', component: SignInComponent},
+  {path: 'post-company', component: PostCompanyComponent},
 
   //Admin
 
   //Employee
-
 
   // Employer
   {path: 'employer-management', component: ManagementComponent},

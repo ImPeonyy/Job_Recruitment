@@ -35,6 +35,7 @@ import { PutJobValueComponent } from './pages/employer/put-job-value/put-job-val
 import { TestComponent } from './test/test.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { PostCompanyComponent } from './pages/post-company/post-company.component';
 
 
 
@@ -53,6 +54,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     PutJobValueComponent,
     TestComponent,
     SignInComponent,
+    PostCompanyComponent,
     
   ],
   imports: [

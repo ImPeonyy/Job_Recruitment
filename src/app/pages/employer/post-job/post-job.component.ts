@@ -60,15 +60,12 @@ export class PostJobComponent implements OnInit {
   post( ): void {
     this.http.post(this.job).subscribe(
       (res: any) => {
-        console.log(this.job);
-        console.log(res); // Log the response for debugging
         this.initializeJob();
-        alert('Post job successfully!');
+        location.reload();
       },
       (err: any) => {
         console.error('Đã xảy ra lỗi:', err); // Log any errors for debugging
-        alert('Post job fail!');
-        console.log(this.job);
+        location.reload();
       }
     );
   }
