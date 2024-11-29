@@ -11,6 +11,7 @@ import { PostJobValueComponent } from '../post-job-value/post-job-value.componen
 import { PutJobValueComponent } from '../put-job-value/put-job-value.component';
 import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { JobValueService } from '../../../services/job_value/job-value.service';
 
 @Component({
   selector: 'app-management',
@@ -19,10 +20,9 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 })
 export class ManagementComponent implements OnInit, AfterViewInit {
 
-  constructor(private js: JobService, 
-    private dialogRef: MatDialog,
-    private cls: CloudsService,
-    private _liveAnnouncer: LiveAnnouncer) {
+  constructor(private js: JobService, private dialogRef: MatDialog,
+              private cls: CloudsService, private jvs: JobValueService
+  ) {
 
   }
 
@@ -88,12 +88,22 @@ export class ManagementComponent implements OnInit, AfterViewInit {
     location.reload();
   }
 
-  openPutJob_ValueForm(job: Job) {
-    this.dialogRef.open(PutJobValueComponent, {
-      height: '1000px',
-      width: '640px'
-    });
-    this.getSelectedJob(job);
+  openJob_ValueForm(job: Job) {
+    this.jvs.getByID(job.ID).subscribe(res => {
+      if(res != null) {
+        this.dialogRef.open(PutJobValueComponent, {
+          height: '1000px',
+          width: '640px'
+        });
+        this.getSelectedJob(job);
+      } else {
+          this.dialogRef.open(PostJobValueComponent, {
+            height: '1000px',
+            width: '640px'
+          });
+          this.getSelectedJob(job);        
+      }
+    })
   }
 
   applyFilter(event: Event) {

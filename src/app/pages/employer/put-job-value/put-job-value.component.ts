@@ -41,14 +41,13 @@ export class PutJobValueComponent implements OnInit {
   }
 
   post( ): void {
-    this.jvs.post(this.job_value).subscribe(
+    this.jvs.put(this.job_value).subscribe(
       (res: any) => {
-        // this.initializeJob_Value();
-        alert('Put job value successfully!');
+        location.reload();
       },
       (err: any) => {
         console.error('Đã xảy ra lỗi:', err); // Log any errors for debugging
-        alert('Put job value fail!');
+        location.reload();
       }
     );
   }

@@ -12,10 +12,16 @@ export class AppComponent implements OnInit{
   public auth;
 
   ngOnInit() {
-    this.auth = this.cls.auth;
+    
+    this.cls.auth$.subscribe(res => {
+      this.auth = res;
+    })
+    this.cls.auth$.subscribe(res => {
+      console.log(res);
+    })
     // this.auth = 1;
   }
   constructor(private cls: CloudsService) {
-    console.log(this.cls.auth);
+    
   }
 }

@@ -39,11 +39,11 @@ export class PostJobValueComponent implements OnInit {
     this.jvs.post(this.job_value).subscribe(
       (res: any) => {
         this.initializeJob_Value();
-        alert('Post job successfully!');
+        location.reload();
       },
       (err: any) => {
         console.error('Đã xảy ra lỗi:', err); // Log any errors for debugging
-        alert('Post job fail!');
+        location.reload();
       }
     );
   }

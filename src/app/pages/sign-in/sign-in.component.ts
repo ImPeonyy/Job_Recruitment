@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { Account } from '../../models/account/account';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { AccountService } from '../../services/account/account.service';
-import { catchError, count, debounceTime, first, map, Observable, of, switchMap } from 'rxjs';
+import { CloudsService } from '../../services/clouds/clouds.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,7 +13,8 @@ import { catchError, count, debounceTime, first, map, Observable, of, switchMap 
 })
 export class SignInComponent implements OnInit{
 
-  constructor(private router: Router, private fb: FormBuilder, private as: AccountService) {
+  constructor(private router: Router, private fb: FormBuilder, 
+              private as: AccountService, private cls: CloudsService) {
     
   }
 
@@ -57,17 +59,43 @@ export class SignInComponent implements OnInit{
     });
   }
 
+  authAccount() {
+    var acc: Account;
+    this.as.getAccByEmail(this.account.email).subscribe(res => {
+      acc = res;
+    })
+    this.cls.auth$.subscribe(res => {
+      console.log(res);
+    })
+    this.cls.auth$.next(1);
+    this.cls.auth$.subscribe(res => {
+      console.log(res);
+    })
+    this.cls.authAccount$.next(acc);
+  }
+
   onSignUp() {
     if (this.signUpForm.valid) {
-      this.as.post(this.account).subscribe(
-        (res: any) => {
-          this.initializeAccount();
-          this.router.navigateByUrl('/index');
-        },
-        (err: any) => {
-          alert('Post job fail!');
-        }
-      );
+      if(this.account.role == -1) {
+        this.as.post(this.account).subscribe(
+          (res: any) => {
+            this.initializeAccount();
+            this.router.navigate(['post-company']);
+          },
+          (err: any) => {
+            alert('Post account fail');
+          }
+        );
+      } else {
+        this.as.post(this.account).subscribe(
+          (res: any) => {
+            this.initializeAccount();
+            this.isSignDivVisiable  = false;          },
+          (err: any) => {
+            alert('Post account fail');
+          }
+        );
+      }
     } else {
       this.signUpForm.markAllAsTouched(); // to trigger validation
     }
@@ -87,11 +115,11 @@ export class SignInComponent implements OnInit{
             localStorage.setItem('user', JSON.stringify(user));
   
             if (user.role == 0) {
-              alert('Welcome Admin!');
-              this.router.navigate(['index']);
+              this.authAccount();
+              this.router.navigate(['/']);
             } else if (user.role == 1) {
-              alert('Welcome User!');
-              this.router.navigate(['index']);
+              this.authAccount();
+              this.router.navigate(['/']);
             } else {
               alert('Invalid role. Please contact support.');
             }
