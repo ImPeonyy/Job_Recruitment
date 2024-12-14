@@ -45,9 +45,9 @@ export class JobSearchComponent implements OnInit{
   }
   
   LayDSDiaChi() {
-  this.http.LayDLJob().subscribe(data => { 
+  this.http.Layjoblist().subscribe(data => { 
     this.DSJob = data; 
-    this.DSDiaChi = [...new Set(this.DSJob.map(i=> i.address))]; // Lọc địa chỉ duy nhất
+    this.DSDiaChi = [...new Set(this.DSJob.map(i=> i.Location))]; // Lọc địa chỉ duy nhất
     console.log('address:', this.DSDiaChi); });
   }
 
@@ -157,7 +157,7 @@ export class JobSearchComponent implements OnInit{
       this.http.Layjoblist().subscribe(data => { // lấy danh sách job
         this.DSJob = data.filter(job => {
           const keywordMatch = this.keyword.trim() === '' || job.title.toLowerCase().includes(this.keyword.toLowerCase()) || job.CompanyName.toLowerCase().includes(this.keyword.toLowerCase());
-          const addressMatch = this.keywordaddress.trim() === '' || job.address.toLowerCase() === this.keywordaddress.toLowerCase();
+          const addressMatch = this.keywordaddress.trim() === '' || job.Location.toLowerCase() === this.keywordaddress.toLowerCase();
           const addCompany = this.keywordCompany.trim() === '' || job.CompanyName.toLowerCase() === this.keywordCompany.toLowerCase();
 
           return keywordMatch && addressMatch && addCompany;

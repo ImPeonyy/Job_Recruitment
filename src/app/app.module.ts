@@ -32,6 +32,7 @@ import { ManagementComponent } from './pages/employer/management/management.comp
 
 import { JobSearchComponent } from './pages/job-search/job-search.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { ManageEnrolmentComponent } from './pages/manage-enrolment/manage-enrolment.component';
 
 @NgModule({
   declarations: [
@@ -41,11 +42,12 @@ import { UserManagementComponent } from './pages/user-management/user-management
     PutJobComponent,
     ManageJobPostingsComponent,
     JobSearchComponent,
-    UserManagementComponent
+    UserManagementComponent,
     RegisterComponent,
     LoginComponent,
     JobComponent,
     ManagementComponent,
+    ManageEnrolmentComponent,
     
   ],
   imports: [

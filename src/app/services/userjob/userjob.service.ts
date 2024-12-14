@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Enrolment } from '../../models/enrolment/enrolment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,15 @@ export class UserjobService {
 
   }
 
+  public Layenrolmentlist() : Observable<any[]> {
+    const url = `${this.REST_API_SERVER}/Enrolment/GetListEnrolment`;
+    return this.http.get<any>(url, this.httpOptions);
+  }
 
-
-  
+  public capnhapenrolment(enrolment: Enrolment) : Observable<any[]> {
+    const url = `${this.REST_API_SERVER}/Enrolment/Putstate`;
+    return this.http.put<any>(url, enrolment, this.httpOptions);
+  }
 
   public Layjoblist() : Observable<any[]> {
     const url = `${this.REST_API_SERVER}/Job/Getjoblist`;
