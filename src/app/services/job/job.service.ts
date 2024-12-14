@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Job } from '../../models/job/job';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +17,6 @@ export class JobService {
   constructor(private http: HttpClient) {
 
   }
-
-  public selectedJob$ = new BehaviorSubject<Job>(null);
 
   public get(): Observable<any> {
     const url = `${this.REST_API_SERVER}/Job`;
@@ -59,6 +56,16 @@ export class JobService {
 
   public getTypeofJob(): Observable<any> {
     const url = `${this.REST_API_SERVER}/Type_of_Job`;
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
+  public getJobTypeDesc(): Observable<any> {
+    const url = `${this.REST_API_SERVER}/Job/GetJobTypeDesc`;
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
+  public getLocationDesc(): Observable<any> {
+    const url = `${this.REST_API_SERVER}/Job/GetLocationDesc`;
     return this.http.get<any>(url, this.httpOptions);
   }
 }

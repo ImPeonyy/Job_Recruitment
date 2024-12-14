@@ -5,6 +5,7 @@ import { JobService } from '../../services/job/job.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { PutJobComponent } from '../employer/put-job/put-job.component';
+import { CloudsService } from '../../services/clouds/clouds.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { PutJobComponent } from '../employer/put-job/put-job.component';
 })
 export class ManageJobPostingsComponent implements OnInit {
 
-  constructor(private http: JobService, private dialogRef: MatDialog) {
+  constructor(private js: JobService, private dialogRef: MatDialog, private cls: CloudsService) {
 
   }
 
@@ -30,11 +31,11 @@ export class ManageJobPostingsComponent implements OnInit {
   clickedRows = new Set<Job>();
 
   getSelectedJob(job: Job) {
-    this.http.selectedJob$.next(job);
+    this.cls.selectedJob$.next(job);
   }
 
   getListJob() {
-    this.http.getJobIndexDesc().subscribe({
+    this.js.getJobIndexDesc().subscribe({
       next: (res) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;

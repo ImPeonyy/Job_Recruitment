@@ -22,11 +22,11 @@ export class PostJobComponent implements OnInit {
   public $job_type: TypeOfJob[];
 
   ngOnInit() {
-    this.initializeEmployee();
+    this.initializeJob();
     this.getSelectInput();
   }
 
-  initializeEmployee() {
+  initializeJob() {
     this.job = {
       ID : 0,
       title: '',
@@ -38,7 +38,8 @@ export class PostJobComponent implements OnInit {
       date_expired: null,
       welfare: '',
       job_title: '',
-      job_type: null
+      job_type: null,
+      state: 0
     };
   }
 
@@ -59,15 +60,12 @@ export class PostJobComponent implements OnInit {
   post( ): void {
     this.http.post(this.job).subscribe(
       (res: any) => {
-        console.log(this.job);
-        console.log(res); // Log the response for debugging
-        this.initializeEmployee();
-        alert('Post job successfully!');
+        this.initializeJob();
+        location.reload();
       },
       (err: any) => {
         console.error('Đã xảy ra lỗi:', err); // Log any errors for debugging
-        alert('Post job fail!');
-        console.log(this.job);
+        location.reload();
       }
     );
   }
