@@ -20,7 +20,7 @@ export class UserManagementComponent implements OnInit{
     public DSRole: any[];
 
     public DdSUser: any[];
-    keyworRole: string= '';
+    keyworRole: String = '';
     keyword: string = '';
     
 
@@ -55,12 +55,15 @@ export class UserManagementComponent implements OnInit{
     }
   
     ChonRole(): void {
-      console.log('Keyword:', this.keyworRole)
+      console.log('role:', this.keyworRole)
       if (this.keyworRole) {
+       
            // Lọc danh sách người dùng theo vai trò được chọn
         this.http.LayDLUser().subscribe(data => { // Fetch all students
+          console.log('Dữ liệu nhận từ API:', data);
           this.DSUser = data.filter(i =>
-            i.role.toLowerCase() === this.keyworRole.toLowerCase());
+            parseFloat(i.role) === parseFloat(this.keyworRole.toString()));
+            //i.role.parseFloat() === this.keyworRole.parseFloat());
           console.log('ds user:', this.DSUser)
         });
       } else {

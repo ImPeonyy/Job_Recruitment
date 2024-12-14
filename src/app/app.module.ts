@@ -30,6 +30,7 @@ import { JobComponent } from './pages/admin/job/job.component';
 import { ManagementComponent } from './pages/employer/management/management.component';
 import { JobSearchComponent } from './pages/job-search/job-search.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { ManageEnrolmentComponent } from './pages/manage-enrolment/manage-enrolment.component';
 import { PostJobValueComponent } from './pages/employer/post-job-value/post-job-value.component';
 import { PutJobValueComponent } from './pages/employer/put-job-value/put-job-value.component';
 import { TestComponent } from './test/test.component';
@@ -38,7 +39,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PostCompanyComponent } from './pages/post-company/post-company.component';
 import { EnrolmentComponent } from './pages/employer/enrolment/enrolment.component';
 import { EmployerLayoutComponent } from './pages/employer/employer-layout/employer-layout.component';
-
 
 
 @NgModule({
@@ -50,6 +50,8 @@ import { EmployerLayoutComponent } from './pages/employer/employer-layout/employ
     ManageJobPostingsComponent,
     JobSearchComponent,
     UserManagementComponent,
+    JobComponent,
+    ManageEnrolmentComponent,
     JobComponent,
     ManagementComponent,
     PostJobValueComponent,
