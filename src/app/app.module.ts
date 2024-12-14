@@ -36,6 +36,8 @@ import { TestComponent } from './test/test.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PostCompanyComponent } from './pages/post-company/post-company.component';
+import { EnrolmentComponent } from './pages/employer/enrolment/enrolment.component';
+import { EmployerLayoutComponent } from './pages/employer/employer-layout/employer-layout.component';
 
 
 
@@ -55,6 +57,8 @@ import { PostCompanyComponent } from './pages/post-company/post-company.componen
     TestComponent,
     SignInComponent,
     PostCompanyComponent,
+    EnrolmentComponent,
+    EmployerLayoutComponent,
     
   ],
   imports: [
