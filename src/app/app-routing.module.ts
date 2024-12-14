@@ -8,6 +8,8 @@ import { JobSearchComponent } from './pages/job-search/job-search.component';
 import { TestComponent } from './test/test.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { PostCompanyComponent } from './pages/post-company/post-company.component';
+import { EnrolmentComponent } from './pages/employer/enrolment/enrolment.component';
+import { EmployerLayoutComponent } from './pages/employer/employer-layout/employer-layout.component';
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -22,8 +24,11 @@ const routes: Routes = [
   //Employee
 
   // Employer
-  {path: 'employer-management', component: ManagementComponent},
-  {path: 'employer/post', component: PostJobComponent},
+  {path: 'employer', component: EmployerLayoutComponent, children: [
+    {path: 'management', component: ManagementComponent},
+    {path: 'enrolment', component: EnrolmentComponent},
+  ]},
+
   
 ];
 
