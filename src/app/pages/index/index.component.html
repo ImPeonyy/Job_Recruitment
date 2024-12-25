@@ -45,7 +45,7 @@
         <div class="row justify-content-center d-flex">
             <div class="col-lg-8 post-list">
                 
-                <div class="single-post d-flex flex-row" *ngFor="let i of $job_index" style="background-color: #f1f9fc;">
+                <div class="single-post d-flex flex-row" *ngFor="let i of $job_index" style="background-color: #f1f9fc; cursor: pointer;" (click)="openJobDetail(i)">
                     <div class="thumb">
                         <img src="{{i.logo}}" alt="" style="width: 100px; height: 100px; margin-right: 10px; border: 1px solid #e5e5e5; ">
                         
@@ -57,7 +57,7 @@
                                 <h6>{{i.name}}</h6>					
                             </div>
                             <ul class="btns" style="margin-right: 10px;">
-                                <li><a href="#">Apply</a></li>
+                                <li style="cursor: pointer;" (click)="applyJob(i)"><a>Apply</a></li>
                             </ul>
                         </div>
                         <h5>{{i.job_title}}</h5>

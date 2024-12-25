@@ -1,0 +1,31 @@
+<section class="banner-area relative" id="home">	
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Admin		
+                </h1>	
+                <p class="text-white"><a [routerLink]="['']">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a [routerLink]="['admin']"> Admin</a></p>
+            </div>											
+        </div>
+    </div>
+</section>
+
+<section class="contact-page-area section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 d-flex flex-column">
+            <!-- <a class="genric-btn info radius mt-10 text-white" (click)="openPostJobForm();">Post Job</a> -->
+            <a class="genric-btn info radius mt-10 text-white" [routerLink]="['user-management']">User</a>
+            <a class="genric-btn info radius mt-10 text-white" [routerLink]="['job-management']">Job</a>
+            </div>
+            <div class="col-lg-9 d-flex flex-column">
+
+                <router-outlet></router-outlet>
+
+            </div>
+        </div>
+    </div>
+</section>
+

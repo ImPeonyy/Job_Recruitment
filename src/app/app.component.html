@@ -1,5 +1,5 @@
 
-<header id="header" *ngIf="this.auth != 1">
+<header id="header" *ngIf="this.auth == null; else elseBlock">
   <div class="container">
     <div class="row align-items-center justify-content-between d-flex">
       <div id="logo">
@@ -11,13 +11,6 @@
           <li><a [routerLink]="['']">About Us</a></li>
           <li><a [routerLink]="['test']">Test</a></li>
           <li><a [routerLink]="['search']">Search</a></li>
-          <li class="menu-has-children"><a href="">Username</a>
-            <ul>
-              <li><a [routerLink]="['/job']">Admin</a></li>
-              <li><a [routerLink]="['employer/management']">Employer</a></li>
-              <li><a href="single.html">Employee</a></li>
-            </ul>
-          </li>
           <li><a class="ticker-btn" [routerLink]="['sign-in']">Sign In</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->		    		
@@ -25,23 +18,22 @@
   </div>
 </header>
 
-<header id="header" *ngIf="this.auth == 1">
+<ng-template #elseBlock>
+<header id="header">
   <div class="container">
     <div class="row align-items-center justify-content-between d-flex">
       <div id="logo">
-        <a [routerLink]="['/index']"><img src="assets/img/logo.png"/></a>
+        <a [routerLink]="['/']"><img src="assets/img/logo.png"/></a>
       </div>
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a [routerLink]="['/index']">Home</a></li>
+          <li class="menu-active"><a [routerLink]="['/']">Home</a></li>
           <li><a [routerLink]="['']">About Us</a></li>
           <li><a [routerLink]="['test']">Test</a></li>
           <li><a [routerLink]="['search']">Search</a></li>
-          <li class="menu-has-children"><a href="">Username</a>
+          <li class="menu-has-children"><a [routerLink]="getRouterLink()">{{this.account.name}}</a>
             <ul>
-              <li><a [routerLink]="['/job']">Admin</a></li>
-              <li><a [routerLink]="['employer-management']">Employer</a></li>
-              <li><a href="single.html">Employee</a></li>
+              <li style="cursor: pointer;"><a (click)="signOut()">Sign Out</a></li>
             </ul>
           </li>
         </ul>
@@ -49,19 +41,10 @@
     </div>
   </div>
 </header>
+</ng-template>
 
-      <!-- <router-outlet></router-outlet> -->
+      <router-outlet></router-outlet>
 
-      <!-- <app-job></app-job>
-      <app-user-management></app-user-management>
-
-      <app-job-search></app-job-search> 
-      <app-job></app-job>
-      <app-user-management></app-user-management>-->
-      <app-manage-enrolment></app-manage-enrolment> 
-      <app-manage-application-history></app-manage-application-history>
- 
-      <!-- <app-manage-enrolment></app-manage-enrolment> -->
     <footer class="footer-area section-gap">
       <div class="container">
         <div class="row">

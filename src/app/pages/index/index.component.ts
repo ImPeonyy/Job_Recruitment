@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../../services/job/job.service';
-import { Job } from '../../models/job/job';
 import { Job_Index } from '../../models/job_index/job-index';
-import { TypeOfJobService } from '../../services/type_of_job/type-of-job.service';
-import { TypeOfJob } from '../../models/type_of_job/type-of-job';
-import { Province } from '../../models/province/province';
+import { CloudsService } from '../../services/clouds/clouds.service';
+import { Job } from '../../models/job/job';
+import { MatDialog } from '@angular/material/dialog';
+import { UploadCvComponent } from '../upload-cv/upload-cv.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -13,7 +14,9 @@ import { Province } from '../../models/province/province';
 })
 export class IndexComponent implements OnInit {
 
-  constructor(private js: JobService) {
+  constructor(private js: JobService, private cls: CloudsService,
+              private dialogRef: MatDialog, private router: Router
+  ) {
 
   }
 
@@ -24,18 +27,32 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     this.js.getJobIndexDesc().subscribe(res => {
       this.$job_index = res;
-      console.log(this.$job_index);
     });
 
     this.js.getJobTypeDesc().subscribe(res => {
       this.$count_job_type = res;
-      console.log(this.$count_job_type);
     });
 
     this.js.getLocationDesc().subscribe(res => {
       this.$count_location = res;
-      console.log(this.$count_location);
     });
+  }
+
+  setSelectedJob(job) {
+    this.cls.selectedJob$.next(job);
+  }
+
+  applyJob(job) {
+    this.dialogRef.open(UploadCvComponent, {
+          height: '1000px',
+          width: '640px'
+        });
+        this.setSelectedJob(job);
+  }
+
+  openJobDetail(jobIndex) {
+    this.cls.jobIndex$.next(jobIndex);
+    this.router.navigate(['job-detail']);
   }
 
 }
