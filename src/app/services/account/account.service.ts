@@ -36,7 +36,9 @@ export class AccountService {
 
     public getAccByEmail(email: string): Observable<any> {
       const url = `${this.REST_API_SERVER}/Account/GetAccByEmail?email=${email}`;
-      return this.http.get<any>(url, this.httpOptions);
+      return this.http.get<any>(url, this.httpOptions).pipe(
+        map(response => response.length > 0 ? response[0] : null) // Return the first element or null if empty
+    );
     }
 
     public checkEmailExists(email: any): Observable<boolean> {

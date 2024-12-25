@@ -46,7 +46,7 @@ export class ManagementComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  getSelectedJob(job: Job) {
+  setSelectedJob(job: Job) {
     this.cls.selectedJob$.next(job);
   }
 
@@ -71,7 +71,7 @@ export class ManagementComponent implements OnInit, AfterViewInit {
       height: '1000px',
       width: '640px'
     });
-    this.getSelectedJob(job);
+    this.setSelectedJob(job);
   }
 
   openDetailJobForm(job: Job) {
@@ -79,7 +79,7 @@ export class ManagementComponent implements OnInit, AfterViewInit {
       height: '1000px',
       width: '640px'
     });
-    this.getSelectedJob(job);
+    this.setSelectedJob(job);
   }
 
   deleteJob(job: Job) {
@@ -95,13 +95,13 @@ export class ManagementComponent implements OnInit, AfterViewInit {
           height: '1000px',
           width: '640px'
         });
-        this.getSelectedJob(job);
+        this.setSelectedJob(job);
       } else {
           this.dialogRef.open(PostJobValueComponent, {
             height: '1000px',
             width: '640px'
           });
-          this.getSelectedJob(job);        
+          this.setSelectedJob(job);        
       }
     })
   }

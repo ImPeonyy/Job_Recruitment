@@ -1,5 +1,5 @@
 import { Component,OnInit  } from '@angular/core';
-import { UserjobService } from '../../services/userjob/userjob.service';
+import { UserjobService } from '../../../services/userjob/userjob.service';
 
 @Component({
   selector: 'app-user-management',

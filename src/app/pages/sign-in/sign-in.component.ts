@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Account } from '../../models/account/account';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
@@ -60,18 +60,12 @@ export class SignInComponent implements OnInit{
   }
 
   authAccount() {
-    var acc: Account;
     this.as.getAccByEmail(this.account.email).subscribe(res => {
-      acc = res;
+      this.cls.save('account', res);
+      this.account = res;
+      sessionStorage.setItem('role', this.account.role.toString());
     })
-    this.cls.auth$.subscribe(res => {
-      console.log(res);
-    })
-    this.cls.auth$.next(1);
-    this.cls.auth$.subscribe(res => {
-      console.log(res);
-    })
-    this.cls.authAccount$.next(acc);
+    sessionStorage.setItem('auth', 'true')
   }
 
   onSignUp() {
@@ -108,26 +102,19 @@ export class SignInComponent implements OnInit{
     }
     this.as.getAccByEmail(this.account.email).subscribe(
       (response: any) => {
-        if (response && response.length > 0) {
-          const user = response[0]; 
+        if (response) {
+          const user = response; 
           if (user.password === this.account.password) {
             
             localStorage.setItem('user', JSON.stringify(user));
-  
-            if (user.role == 0) {
-              this.authAccount();
-              this.router.navigate(['/']);
-            } else if (user.role == 1) {
-              this.authAccount();
-              this.router.navigate(['/']);
-            } else {
-              alert('Invalid role. Please contact support.');
-            }
+            this.authAccount();
+              this.router.navigate(['/']).then(() => {
+                window.location.reload();
+              });
           } else {
             alert('Invalid password!');
           }
         } else {
-        
           alert('Email does not exist!');
         }
       },

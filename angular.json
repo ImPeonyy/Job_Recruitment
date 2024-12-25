@@ -74,7 +74,8 @@
               "buildTarget": "Job_Recruitment:build:production"
             },
             "development": {
-              "buildTarget": "Job_Recruitment:build:development"
+              "buildTarget": "Job_Recruitment:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,9 @@
+<div>
+  <h2>Chọn một file để tải lên</h2>
+  
+  <!-- Input cho phép người dùng chọn file -->
+  <input type="file" (change)="onFileSelected($event)" />
+
+  <!-- Nút để gửi file lên server -->
+  <button (click)="apply()">Tải lên</button>
+</div>
