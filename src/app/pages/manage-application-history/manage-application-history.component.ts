@@ -4,21 +4,22 @@ import { UserjobService } from '../../services/userjob/userjob.service';
 import { Enrolment } from '../../models/enrolment/enrolment';
 
 @Component({
-  selector: 'app-manage-enrolment',
-  templateUrl: './manage-enrolment.component.html',
-  styleUrl: './manage-enrolment.component.css'
+  selector: 'app-manage-application-history',
+  templateUrl: './manage-application-history.component.html',
+  styleUrl: './manage-application-history.component.css'
 })
-export class ManageEnrolmentComponent implements OnInit{
-  constructor(private http: UserjobService) {
-    
-  }
+export class ManageApplicationHistoryComponent implements OnInit{
+constructor(private http: UserjobService){
 
-  ngOnInit(): void {
-   this.TaiDSEnrolment()
-  this.TaiJobTille()
-  }
- 
-  DSEnrolment: any[];
+}
+
+
+ngOnInit(): void {
+  this.TaiDSEnrolment()
+ this.TaiJobTille()
+ }
+
+ DSEnrolment: any[];
   DSjobtilte: any[];
   showSuccess: boolean = false;
   showError: boolean = false;
@@ -34,7 +35,7 @@ export class ManageEnrolmentComponent implements OnInit{
     if (this.keyword.trim() !== '' || this.keywordJobtitle.trim()  !== '' || this.keyworState.trim() !== '' ) {
       this.http.Layenrolmentlist().subscribe(data => { // Fetch all students
         this.DSEnrolment = data.filter(i =>{
-          const keyaccountname = this.keyword.trim() === '' || i.Accountname.toLowerCase().includes(this.keyword.toLowerCase());
+          const keyaccountname = this.keyword.trim() === '' || i.name.toLowerCase().includes(this.keyword.toLowerCase());
           const keyJobtitle =   this.keywordJobtitle.trim() === ''   || i.jobtitle.toLowerCase() == this.keywordJobtitle.toLowerCase();
           const keyState =  this.keyworState.trim() === '' ||  parseFloat(i.state) === parseFloat(this. keyworState.toString());
 

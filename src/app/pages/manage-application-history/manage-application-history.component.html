@@ -4,11 +4,11 @@
         <div class="container">
           <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
-              <h1 class="text-white">Manager Enrolment</h1>
+              <h1 class="text-white">Manager Application History</h1>
               <p class="text-white">
                 <a href="index.html">Home </a>
                 <span class="lnr lnr-arrow-right"></span>
-                <a href="contact.html">Manager Enrolment</a>
+                <a href="contact.html">Manager Application History</a>
               </p>
             </div>
           </div>
@@ -30,12 +30,12 @@
           <div class="col-lg-9 d-flex flex-column">          
           <div class="mat-elevation-z8 demo-table">
             
-            <h3 class="text-center mb-4">Enrolment List</h3>
+            <h3 class="text-center mb-4">Application History List</h3>
                <div class="table-responsive">
 
             <div class="row justify-content-center form-wrap">    
               <div class="col-lg-4 form-cols">
-                <input type="text" class="form-control" name="search" placeholder="Enter username" [(ngModel)]="keyword">
+                <input type="text" class="form-control" name="search" placeholder="Enter Company" [(ngModel)]="keyword">
             </div>
             
             <div class="col-lg-3 form-cols" > 
@@ -67,16 +67,18 @@
                 <table class="table table-hover">             
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
+                           
                             <th scope="col">Job Title</th>
+                            <th scope="col">Company</th>
                             <th scope="col">State</th>
-                            <th scope="col">Action</th>
+                            
                         </tr>              
                     <tbody>
                         <tr *ngFor="let i of DSEnrolment; let n = index ">
                             <th scope="row">{{ n + 1 }}</th>
-                            <td >{{i.Accountname}}</td>                
+                                     
                             <td>{{i.jobtitle}}</td>
+                            <td>{{i.name}}</td>
                             <td>
                              
                               <span *ngIf="i.state === 0" class="badge badge-secondary">Pending</span>
@@ -84,67 +86,13 @@
                               <span *ngIf="i.state === -1" class="badge badge-danger">Decline</span>
                        
                           </td>
-                         <td>
-                                <button class="btn btn-primary btn-sm mr-2" (click)="viewProfile(i)"><i class="fa fa-info-circle large-icon"></i></button> 
-                                <button class="btn btn-success btn-sm mr-2" (click)="CapNhatDuyet(i, 1)"><i class="fa fa-check-circle large-icon"></i></button>
-                                <button class="btn btn-danger btn-sm" (click)="CapNhattuchoi(i, -1)"><i class="fa fa-times-circle large-icon"></i></button>
-                                <!-- <button class="btn btn-danger btn-sm" (click)="XoaUser(i.ID)">delete</button> -->
-                            </td>
+                        
                         </tr>                        
                     </tbody>
                 </table>
             </div>
         </div>
          <!--list-->
-  <!-- Thêm phần thông báo thành công -->
-  <div *ngIf="showSuccess" class="toast toast-success">
-    <i class="fa fa-check-circle "></i> Accept successfully!
-    </div>
-
-    <div *ngIf="showfailure" class="toast toast-error">
-      <i class="fa fa-times-circle"></i> Decline successfully!
-      </div>
-
-    <!-- Thêm phần thông báo lỗi -->
-    <div *ngIf="showError" class="toast toast-error">
-      <i class="fa fa-times-circle "></i> Error updating status!
-    </div>      
-
-<!-- Modal -->
-<div class="modal" *ngIf="showModal">
-  <div class="modal-content">
-    <h2 class="modal-title">Information</h2>
-    <div class="modal-body">
-      <div class="info-row">
-        <i class="icon fas fa-user"></i>
-        <p><strong>Name:</strong></p>
-        <div class="info-box">{{ selectedProfile?.Accountname || 'N/A'}}</div>
-      </div>
-      <div class="info-row">
-        <i class="icon fas fa-envelope"></i>
-        <p><strong>Gmail:</strong></p>
-        <div class="info-box">{{ selectedProfile?.Accountemail || 'N/A'}}</div>
-      </div>
-      <div class="info-row">
-        <i class="icon fas fa-phone"></i> 
-        <p><strong>Phone:</strong></p>
-        <div class="info-box">{{ selectedProfile?.Accountphone_number || 'N/A' }}</div>
-      </div>
-      <div class="info-row">
-        <i class="icon fas fa-file-alt"></i>
-        <p><strong>CV profile:</strong></p>
-        <div class="info-box">{{ selectedProfile?.cv || 'No CV uploaded'}}</div>
-        </div>
-        <button class="btn btn-primary" *ngIf="selectedProfile?.cv" (click)="downloadCV(selectedProfile.ID)">
-          <i class="fas fa-download"></i> Download CV
-        </button>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" (click)="closeModal()">Đóng</button>
-    </div>
-  </div>
-</div>
-<!-- Modal -->
 
 <mat-paginator [length]="100"
   [pageSize]="10"

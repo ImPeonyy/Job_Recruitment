@@ -39,6 +39,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PostCompanyComponent } from './pages/post-company/post-company.component';
 import { EnrolmentComponent } from './pages/employer/enrolment/enrolment.component';
 import { EmployerLayoutComponent } from './pages/employer/employer-layout/employer-layout.component';
+import { ManageApplicationHistoryComponent } from './pages/manage-application-history/manage-application-history.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { EmployerLayoutComponent } from './pages/employer/employer-layout/employ
     PostCompanyComponent,
     EnrolmentComponent,
     EmployerLayoutComponent,
+    ManageApplicationHistoryComponent,
     
   ],
   imports: [

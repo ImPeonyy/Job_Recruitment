@@ -18,6 +18,34 @@ export class UserjobService {
 
   }
 
+  downloadFile(id: number, fileName: string = 'CV_file.pdf'): void {
+    const url = `${this.REST_API_SERVER}/Enrolment/download/${id}`;
+  
+    this.http.get(url, { responseType: 'blob' }).subscribe(
+      (response: Blob) => {
+        // Tạo một đối tượng URL từ Blob
+        const blob = new Blob([response], { type: 'application/pdf' });
+        const link = document.createElement('a');
+  
+        // Tạo URL và thiết lập link tải
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+  
+        // Thực thi tải file
+        link.click();
+  
+        // Giải phóng URL
+        URL.revokeObjectURL(link.href);
+      },
+      (error) => {
+        console.error('Error downloading file:', error);
+        alert('Có lỗi xảy ra khi tải file. Vui lòng thử lại sau.');
+      }
+    );
+  }
+  
+
+
   public Layenrolmentlist() : Observable<any[]> {
     const url = `${this.REST_API_SERVER}/Enrolment/GetListEnrolment`;
     return this.http.get<any>(url, this.httpOptions);
