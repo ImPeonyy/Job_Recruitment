@@ -31,7 +31,7 @@
             <form [formGroup]="postCompanyForm" (ngSubmit)="post()">
                 <h3>Company informations</h3>
             
-                <input type="text" formControlName="name" placeholder="Name" class="form-control" required [(ngModel)]="company.name">
+                <input type="text" formControlName="name" placeholder="Name" class="form-control" required [(ngModel)]="company.company_name">
                 <div *ngIf="postCompanyForm.get('name')?.invalid && postCompanyForm.get('name')?.touched" class="error-message">
                     Name is required.
                 </div>

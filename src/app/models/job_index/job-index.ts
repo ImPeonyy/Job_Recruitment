@@ -10,7 +10,7 @@ export interface Job_Index {
     welfare: string;
     job_title: string;
     job_type: number;
-    name:string;
+    company_name:string;
     logo: string;
     min_salary: number;
     max_salary: number;

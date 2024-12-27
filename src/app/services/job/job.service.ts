@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +9,9 @@ export class JobService {
 
   readonly REST_API_SERVER = 'https://localhost:7275/api';
   private httpOptions = {
-      headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-      }),
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
   };
 
   constructor(private http: HttpClient) {
@@ -43,11 +43,22 @@ export class JobService {
     return this.http.get<any>(url, this.httpOptions);
   }
 
+  public getJobIndexByID(id): Observable<any> {
+    const url = `${this.REST_API_SERVER}/Job/GetJobIndex/${id}`;
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
   public getCompany(): Observable<any> {
     const url = `${this.REST_API_SERVER}/Company`;
     return this.http.get<any>(url, this.httpOptions);
   }
 
+  public getCompanyByID(id): Observable<any> {
+    const url = `${this.REST_API_SERVER}/Company/${id}`;
+    return this.http.get<any>(url, this.httpOptions).pipe(
+      map(response => response.length > 0 ? response[0] : null) // Return the first element or null if empty
+    );
+  }
 
   public getLocation(): Observable<any> {
     const url = `${this.REST_API_SERVER}/Province`;

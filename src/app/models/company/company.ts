@@ -1,7 +1,7 @@
 export interface Company {
     ID: number;
     accountID: number;
-    name: string;
+    company_name: string;
     link: string;
     address: string;
     extent: number;

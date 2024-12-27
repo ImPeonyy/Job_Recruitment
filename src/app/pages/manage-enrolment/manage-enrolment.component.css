@@ -169,3 +169,9 @@
     transform: translateY(0);
   }
 }
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Space out buttons evenly */
+  gap: 2px; /* Adjust the gap between buttons */
+}

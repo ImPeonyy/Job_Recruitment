@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UploadCvComponent } from './upload-cv.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EnrolmentService } from '../../services/enrolment/enrolment.service';
-import { CloudsService } from '../../services/clouds/clouds.service';
+import { EnrolmentService } from '../../../services/enrolment/enrolment.service';
+import { CloudsService } from '../../../services/clouds/clouds.service';
 import { of, throwError } from 'rxjs';
 
 describe('UploadCvComponent', () => {

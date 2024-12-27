@@ -12,6 +12,8 @@ import { PutJobValueComponent } from '../put-job-value/put-job-value.component';
 import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { JobValueService } from '../../../services/job_value/job-value.service';
+import { Account } from '../../../models/account/account';
+import { Company } from '../../../models/company/company';
 
 @Component({
   selector: 'app-management',
@@ -27,17 +29,25 @@ export class ManagementComponent implements OnInit, AfterViewInit {
   }
 
   public job: Job;
+  account: Account;
+  company: Company;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.getListJob();
+    this.account = this.cls.get('account');
+    this.js.getCompanyByID(this.account.ID).subscribe(res => {
+      this.company = res;
+      console.log(this.company);
+      this.getListJob(this.company.ID);
+    });
+    
   }
 
   
   
-  displayedColumns: string[] = ['ID', 'title','min_salary','name','date_expired','action'];
+  displayedColumns: string[] = ['ID', 'title','min_salary','company_name','date_expired','action'];
 
   dataSource = new MatTableDataSource<any>;
   clickedRows = new Set<Job>();
@@ -50,8 +60,8 @@ export class ManagementComponent implements OnInit, AfterViewInit {
     this.cls.selectedJob$.next(job);
   }
 
-  getListJob() {
-    this.js.getJobIndexDesc().subscribe({
+  getListJob(id) {
+    this.js.getJobIndexByID(id).subscribe({
       next: (res) => {
         this.dataSource.data = res;
         this.dataSource.paginator = this.paginator;
@@ -74,18 +84,11 @@ export class ManagementComponent implements OnInit, AfterViewInit {
     this.setSelectedJob(job);
   }
 
-  openDetailJobForm(job: Job) {
-    this.dialogRef.open(PutJobComponent, {
-      height: '1000px',
-      width: '640px'
-    });
-    this.setSelectedJob(job);
-  }
-
   deleteJob(job: Job) {
-    this.js.delete(job.ID).subscribe(
-    );
-    location.reload();
+    if(confirm('Are you sure you want to delete this job?')) {
+      this.js.delete(job.ID).subscribe();
+      location.reload();
+    }
   }
 
   openJob_ValueForm(job: Job) {

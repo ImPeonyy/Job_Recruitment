@@ -6,8 +6,8 @@ import { JobComponent } from './pages/admin/job/job.component';
 import { ManagementComponent } from './pages/employer/management/management.component';
 import { JobSearchComponent } from './pages/job-search/job-search.component';
 import { TestComponent } from './test/test.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { PostCompanyComponent } from './pages/post-company/post-company.component';
+import { SignInComponent } from './pages/others/sign-in/sign-in.component';
+import { PostCompanyComponent } from './pages/others/post-company/post-company.component';
 import { EnrolmentComponent } from './pages/employer/enrolment/enrolment.component';
 import { EmployerLayoutComponent } from './pages/employer/employer-layout/employer-layout.component';
 import { UserManagementComponent } from './pages/admin/user-management/user-management.component';
@@ -15,7 +15,7 @@ import { AdminLayoutComponent } from './pages/admin/admin-layout/admin-layout.co
 import { JobManagementComponent } from './pages/admin/job-management/job-management.component';
 import { JobDetailComponent } from './pages/job-detail/job-detail.component';
 import { RoleGuard } from './guards/role.guard';
-import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { UnauthorizedComponent } from './pages/others/unauthorized/unauthorized.component';
 
 const routes: Routes = [
   {path: '', component: IndexComponent, canActivate: [RoleGuard], data: { roles: [-1, 0, 1] },},
