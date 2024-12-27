@@ -122,6 +122,42 @@
           </div>
         </div>
 
+<!-- Modal -->
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <h2 class="modal-title">Information</h2>
+    <div class="modal-body">
+      <div class="info-row">
+        <i class="icon fas fa-user"></i>
+        <p><strong>Name:</strong></p>
+        <div class="info-box">{{ selectedProfile?.Accountname || 'N/A'}}</div>
+      </div>
+      <div class="info-row">
+        <i class="icon fas fa-envelope"></i>
+        <p><strong>Gmail:</strong></p>
+        <div class="info-box">{{ selectedProfile?.Accountemail || 'N/A'}}</div>
+      </div>
+      <div class="info-row">
+        <i class="icon fas fa-phone"></i> 
+        <p><strong>Phone:</strong></p>
+        <div class="info-box">{{ selectedProfile?.Accountphone_number || 'N/A' }}</div>
+      </div>
+      <div class="info-row">
+        <i class="icon fas fa-file-alt"></i>
+        <p><strong>CV profile:</strong></p>
+        <div class="info-box">{{ selectedProfile?.cv || 'No CV uploaded'}}</div>
+        </div>
+        <button class="btn btn-primary" *ngIf="selectedProfile?.cv" (click)="downloadCV(selectedProfile.ID)">
+          <i class="fas fa-download"></i> Download CV
+        </button>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="closeModal()">Đóng</button>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+
         <!-- Success & Error Toast Notifications -->
         <div *ngIf="showSuccess" class="toast toast-success">
           <i class="fa fa-check-circle"></i> Accept successfully!

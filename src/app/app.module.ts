@@ -39,6 +39,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PostCompanyComponent } from './pages/others/post-company/post-company.component';
 import { EnrolmentComponent } from './pages/employer/enrolment/enrolment.component';
 import { EmployerLayoutComponent } from './pages/employer/employer-layout/employer-layout.component';
+import { ManageApplicationHistoryComponent } from './pages/manage-application-history/manage-application-history.component';
 import { AdminLayoutComponent } from './pages/admin/admin-layout/admin-layout.component';
 import { JobManagementComponent } from './pages/admin/job-management/job-management.component';
 import { UploadCvComponent } from './pages/others/upload-cv/upload-cv.component';
@@ -66,6 +67,7 @@ import { UnauthorizedComponent } from './pages/others/unauthorized/unauthorized.
     PostCompanyComponent,
     EnrolmentComponent,
     EmployerLayoutComponent,
+    ManageApplicationHistoryComponent,
     AdminLayoutComponent,
     JobManagementComponent,
     UploadCvComponent,

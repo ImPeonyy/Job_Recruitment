@@ -45,6 +45,10 @@ export class ManageEnrolmentComponent implements OnInit {
     }
   }
 
+  downloadCV(id: number): void {
+    this.http.downloadFile(id);
+  }
+
   TaiJobTille(): void {
     this.http.Layenrolmentlist().subscribe(data => {
       this.DSEnrolment = data;
