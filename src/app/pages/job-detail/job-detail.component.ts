@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CloudsService } from '../../services/clouds/clouds.service';
 import { Job_Index } from '../../models/job_index/job-index';
 import { MatDialog } from '@angular/material/dialog';
-import { UploadCvComponent } from '../upload-cv/upload-cv.component';
+import { UploadCvComponent } from '../others/upload-cv/upload-cv.component';
 
 @Component({
   selector: 'app-job-detail',
@@ -18,9 +18,7 @@ export class JobDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cls.jobIndex$.subscribe(res => {
-      this.jobIndex = res;
-    })
+    this.jobIndex = this.cls.get('currJob');
   }
 
   setSelectedJob(job) {

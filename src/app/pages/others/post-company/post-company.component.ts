@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Company } from '../../models/company/company';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CompanyService } from '../../services/company/company.service';
+import { Company } from '../../../models/company/company';
+import { CompanyService } from '../../../services/company/company.service';
 
 @Component({
   selector: 'app-post-company',
@@ -29,7 +29,7 @@ export class PostCompanyComponent implements OnInit{
     this.company = {
       ID : 0,
       accountID: 0,
-      name: null,
+      company_name: null,
       link: null,
       address: null,
       extent: 0,
@@ -39,11 +39,10 @@ export class PostCompanyComponent implements OnInit{
 
   createForm() {
     this.postCompanyForm = this.fb.group({
-      name: ['', Validators.required],
+      company_name: ['', Validators.required],
       link: ['', [Validators.required]],
       address: ['', [Validators.required]], 
-      extent: ['', [Validators.required]],
-      logo: ['', [Validators.required]],
+      extent: ['', [Validators.required]]
     });
   }
 

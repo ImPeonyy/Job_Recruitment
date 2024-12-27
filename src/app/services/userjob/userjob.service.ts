@@ -53,6 +53,11 @@ export class UserjobService {
     return this.http.delete<any>(url, this.httpOptions);
   }
 
+  public capnhapranking(enrolment: Enrolment): Observable<any> {
+    const url = `${this.REST_API_SERVER}/Enrolment/PutRanking`;
+    return this.http.put<any>(url, enrolment, this.httpOptions);
+  }
+
 
 
 

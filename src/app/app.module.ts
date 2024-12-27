@@ -34,16 +34,16 @@ import { ManageEnrolmentComponent } from './pages/manage-enrolment/manage-enrolm
 import { PostJobValueComponent } from './pages/employer/post-job-value/post-job-value.component';
 import { PutJobValueComponent } from './pages/employer/put-job-value/put-job-value.component';
 import { TestComponent } from './test/test.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { SignInComponent } from './pages/others/sign-in/sign-in.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { PostCompanyComponent } from './pages/post-company/post-company.component';
+import { PostCompanyComponent } from './pages/others/post-company/post-company.component';
 import { EnrolmentComponent } from './pages/employer/enrolment/enrolment.component';
 import { EmployerLayoutComponent } from './pages/employer/employer-layout/employer-layout.component';
 import { AdminLayoutComponent } from './pages/admin/admin-layout/admin-layout.component';
 import { JobManagementComponent } from './pages/admin/job-management/job-management.component';
-import { UploadCvComponent } from './pages/upload-cv/upload-cv.component';
+import { UploadCvComponent } from './pages/others/upload-cv/upload-cv.component';
 import { JobDetailComponent } from './pages/job-detail/job-detail.component';
-import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { UnauthorizedComponent } from './pages/others/unauthorized/unauthorized.component';
 
 
 @NgModule({

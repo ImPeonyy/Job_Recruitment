@@ -8,15 +8,13 @@
                 <input [(ngModel)]="job.title" name="title" placeholder="Title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Title'" class="common-input mb-20 form-control" required="" type="text">
             
                 <label for="job_type" style="margin-left: 10px;">Company</label>
-                <select [(ngModel)]="job.company" name="company" aria-label="company" class="mb-20 form-control" required="">
-                    <option value="" disabled selected hidden>Company</option>
-                    <option *ngFor="let i of $company"[value]="i.ID">{{i.name}}</option>
-                </select>
+                <input [(ngModel)]="company.company_name" name="company" class="common-input mb-20 form-control"  type="text" disabled>
+
 
                 <label for="job_type" style="margin-left: 10px;">Location</label>
                 <select [(ngModel)]="job.location" name="location" aria-label="loacation" class="mb-20 form-control" required="">
                     <option value="" disabled selected hidden>Location</option>
-                    <option *ngFor="let i of $location"[value]="i.ID">{{i.name}}</option>
+                    <option *ngFor="let i of $location"[value]="i.ID">{{i.province_name}}</option>
                 </select>
 
                 <input [(ngModel)]="job.address" name="address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'" class="common-input mb-20 form-control" required="" type="text">

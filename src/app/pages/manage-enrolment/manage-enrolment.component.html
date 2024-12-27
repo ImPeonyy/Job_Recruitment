@@ -1,162 +1,212 @@
     <!-- start banner Area -->
     <section class="banner-area relative" id="home">
-        <div class="overlay overlay-bg"></div>
-        <div class="container">
-          <div class="row d-flex align-items-center justify-content-center">
-            <div class="about-content col-lg-12">
-              <h1 class="text-white">Manager Enrolment</h1>
-              <p class="text-white">
-                <a href="index.html">Home </a>
-                <span class="lnr lnr-arrow-right"></span>
-                <a href="contact.html">Manager Enrolment</a>
-              </p>
-            </div>
+      <div class="overlay overlay-bg"></div>
+      <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+          <div class="about-content col-lg-12">
+            <h1 class="text-white">Manager Enrolment</h1>
+            <p class="text-white">
+              <a href="index.html">Home </a>
+              <span class="lnr lnr-arrow-right"></span>
+              <a href="contact.html">Manager Enrolment</a>
+            </p>
           </div>
         </div>
-      </section>
-      <!-- End banner Area --> 
-
+      </div>
+    </section>
 <!-- Start contact-page Area -->
 <section class="contact-page-area section-gap">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 d-flex flex-column">
-          <a class="genric-btn info radius mt-10" href="#">Submit Your CV</a>
-          <a class="genric-btn info radius mt-10" href="#">Post New Job</a>
-          <a class="genric-btn info radius mt-10" href="#">Create New Account</a>
-        </div>
-        
-          <!--list-->
-          <div class="col-lg-9 d-flex flex-column">          
-          <div class="mat-elevation-z8 demo-table">
-            
-            <h3 class="text-center mb-4">Enrolment List</h3>
-               <div class="table-responsive">
+  <div class="container">
+    <div class="row">
+      
+      <!-- Sidebar with action buttons -->
+      <div class="col-lg-3 d-flex flex-column">
+        <a class="genric-btn info radius mt-10" href="#">Submit Your CV</a>
+        <a class="genric-btn info radius mt-10" href="#">Post New Job</a>
+        <a class="genric-btn info radius mt-10" href="#">Create New Account</a>
+      </div>
 
-            <div class="row justify-content-center form-wrap">    
-              <div class="col-lg-4 form-cols">
+      <!-- Enrolment List Section -->
+      <div class="col-lg-9 d-flex flex-column">
+        <div class="mat-elevation-z8 demo-table">
+          <h3 class="text-center mb-4">Enrolment List</h3>
+          <div class="table-responsive">
+
+            <!-- Search and Filters Section -->
+            <div class="row justify-content-center form-wrap">
+              <div class="col-lg-3 form-cols">
                 <input type="text" class="form-control" name="search" placeholder="Enter username" [(ngModel)]="keyword">
-            </div>
-            
-            <div class="col-lg-3 form-cols" > 
-              <div class="default-select" >   
-                 <select  name="Job-type" class="common-input mb-20 form-control" [(ngModel)]="keywordJobtitle">
-                      <option value="">Select Job Tille</option> 
-                     <option *ngFor="let i of DSjobtilte" [value]="i">{{i}}</option>              
-                 </select>                   
-              </div>     
-             </div>
-
-            <div class="col-lg-3 form-cols">
-              <div class="default-select" >
-                  <select class="common-input mb-20 form-control" name="state" [(ngModel)]="keyworState">
-                      <option  value="">Select State</option>
-                      <option  value="-1">Decline</option>
-                      <option  value="0">Pending</option>
-                      <option  value="1">Accept</option>
-                  </select>
               </div>
-           
-          </div>
+
               <div class="col-lg-2 form-cols">
+                <div class="default-select">
+                  <select name="Job-type" class="common-input mb-20 form-control" [(ngModel)]="keywordJobtitle">
+                    <option value="">Select Job Title</option>
+                    <option *ngFor="let i of DSjobtilte" [value]="i">{{i}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-2 form-cols">
+                <div class="default-select">
+                  <select class="common-input mb-20 form-control" name="state" [(ngModel)]="keyworState">
+                    <option value="">Select State</option>
+                    <option value="-1">Decline</option>
+                    <option value="0">Pending</option>
+                    <option value="1">Accept</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-2 form-cols">
+                <div class="default-select">
+                  <select class="common-input mb-20 form-control" name="ranking" [(ngModel)]="keywordRanking">
+                    <option value="">Select Ranking</option>
+                    <option value="1">Rank 1</option>
+                    <option value="2">Rank 2</option>
+                    <option value="3">Rank 3</option>
+                    <option value="4">Rank 4</option>
+                    <option value="5">Rank 5</option>
+                    <option value="6">Rank 6</option>
+                    <option value="7">Rank 7</option>
+                    <option value="8">Rank 8</option>
+                    <option value="9">Rank 9</option>
+                    <option value="10">Rank 10</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-1 form-cols">
                 <button type="button" class="btn btn-info" (click)="timKiemEnrolment()">
-                  <span class="lnr lnr-magnifier" >Search</span>
+                  <span class="lnr lnr-magnifier">Search</span>
                 </button>
-              </div>	
-         </div>
-                <table class="table table-hover">             
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Job Title</th>
-                            <th scope="col">State</th>
-                            <th scope="col">Action</th>
-                        </tr>              
-                    <tbody>
-                        <tr *ngFor="let i of DSEnrolment; let n = index ">
-                            <th scope="row">{{ n + 1 }}</th>
-                            <td >{{i.Accountname}}</td>                
-                            <td>{{i.jobtitle}}</td>
-                            <td>
-                             
-                              <span *ngIf="i.state === 0" class="badge badge-secondary">Pending</span>
-                              <span *ngIf="i.state === 1" class="badge badge-success">Accept</span>
-                              <span *ngIf="i.state === -1" class="badge badge-danger">Decline</span>
-                       
-                          </td>
-                         <td>
-                                <button class="btn btn-primary btn-sm mr-2" (click)="viewProfile(i)"><i class="fa fa-info-circle large-icon"></i></button> 
-                                <button class="btn btn-success btn-sm mr-2" (click)="CapNhatDuyet(i, 1)"><i class="fa fa-check-circle large-icon"></i></button>
-                                <button class="btn btn-danger btn-sm" (click)="CapNhattuchoi(i, -1)"><i class="fa fa-times-circle large-icon"></i></button>
-                                <!-- <button class="btn btn-danger btn-sm" (click)="XoaUser(i.ID)">delete</button> -->
-                            </td>
-                        </tr>                        
-                    </tbody>
-                </table>
+              </div>
             </div>
+
+            <!-- Table displaying enrolment list -->
+            <table class="table table-hover">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Job Title</th>
+                <th scope="col">Ranking</th>
+                <th scope="col">State</th>
+                <th scope="col">Action</th>
+              </tr>
+              <tbody>
+                <tr *ngFor="let i of DSEnrolment; let n = index">
+                  <th scope="row">{{ n + 1 }}</th>
+                  <td>{{ i.Accountname }}</td>
+                  <td>{{ i.jobtitle }}</td>
+                  <td>{{ i.ranking }}</td>
+                  <td>
+                    <span *ngIf="i.state === 0" class="badge badge-secondary">Pending</span>
+                    <span *ngIf="i.state === 1" class="badge badge-success">Accept</span>
+                    <span *ngIf="i.state === -1" class="badge badge-danger">Decline</span>
+                  </td>
+                  <td>
+                    <div class="button-container">
+                      <button class="btn btn-primary btn-sm mr-2" (click)="viewProfile(i)"><i class="fa fa-info-circle large-icon"></i></button>
+                      <button class="btn btn-success btn-sm mr-2" (click)="CapNhatDuyet(i, 1)"><i class="fa fa-check-circle large-icon"></i></button>
+                      <button class="btn btn-danger btn-sm" (click)="CapNhattuchoi(i, -1)"><i class="fa fa-times-circle large-icon"></i></button>
+                      <button class="btn btn-warning btn-sm mr-2" (click)="openRankingModal(i.ID)">
+                        <i class="fa fa-trophy large-icon"></i>
+                      </button>
+                      
+                      
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-         <!--list-->
-  <!-- Thêm phần thông báo thành công -->
-  <div *ngIf="showSuccess" class="toast toast-success">
-    <i class="fa fa-check-circle "></i> Accept successfully!
-    </div>
 
-    <div *ngIf="showfailure" class="toast toast-error">
-      <i class="fa fa-times-circle"></i> Decline successfully!
-      </div>
+        <!-- Success & Error Toast Notifications -->
+        <div *ngIf="showSuccess" class="toast toast-success">
+          <i class="fa fa-check-circle"></i> Accept successfully!
+        </div>
 
-    <!-- Thêm phần thông báo lỗi -->
-    <div *ngIf="showError" class="toast toast-error">
-      <i class="fa fa-times-circle "></i> Error updating status!
-    </div>      
+        <div *ngIf="showfailure" class="toast toast-error">
+          <i class="fa fa-times-circle"></i> Decline successfully!
+        </div>
 
-<!-- Modal -->
-<div class="modal" *ngIf="showModal">
-  <div class="modal-content">
-    <h2 class="modal-title">Information</h2>
-    <div class="modal-body">
-      <div class="info-row">
-        <i class="icon fas fa-user"></i>
-        <p><strong>Name:</strong></p>
-        <div class="info-box">{{ selectedProfile?.Accountname }}</div>
+        <div *ngIf="showError" class="toast toast-error">
+          <i class="fa fa-times-circle"></i> Error updating status!
+        </div>
+
+        <!-- Modal for Profile View & Ranking Update -->
+        <div class="modal" *ngIf="showModalRanking">
+          <div class="modal-content">
+            <h2 class="modal-title">Update Ranking</h2>
+            <div class="modal-body">
+              <div class="info-row">
+                <i class="icon fas fa-trophy"></i>
+                <p><strong>Select Ranking:</strong></p>
+                <div class="info-box">
+                  <select [(ngModel)]="selectedRanking" class="form-control">
+                    <option value="">Select Ranking</option>
+                    <option value="1">Rank 1</option>
+                    <option value="2">Rank 2</option>
+                    <option value="3">Rank 3</option>
+                    <option value="4">Rank 4</option>
+                    <option value="5">Rank 5</option>
+                    <option value="6">Rank 6</option>
+                    <option value="7">Rank 7</option>
+                    <option value="8">Rank 8</option>
+                    <option value="9">Rank 9</option>
+                    <option value="10">Rank 10</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" (click)="closeModal1()">Close</button>
+              <button class="btn btn-primary" (click)="saveRanking()">Save</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal for Profile Information -->
+        <div class="modal" *ngIf="showModal">
+          <div class="modal-content">
+            <h2 class="modal-title">Information</h2>
+            <div class="modal-body">
+              <div class="info-row">
+                <i class="icon fas fa-user"></i>
+                <p><strong>Name:</strong></p>
+                <div class="info-box">{{ selectedProfile?.Accountname }}</div>
+              </div>
+              <div class="info-row">
+                <i class="icon fas fa-envelope"></i>
+                <p><strong>Gmail:</strong></p>
+                <div class="info-box">{{ selectedProfile?.Accountemail }}</div>
+              </div>
+              <div class="info-row">
+                <i class="icon fas fa-phone"></i>
+                <p><strong>Phone:</strong></p>
+                <div class="info-box">{{ selectedProfile?.Accountphone_number }}</div>
+              </div>
+              <div class="info-row">
+                <i class="icon fas fa-file-alt"></i>
+                <p><strong>CV profile:</strong></p>
+                <div class="info-box">{{ selectedProfile?.cv }}</div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" (click)="closeModal()">Close</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paginator -->
+        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of emps">
+        </mat-paginator>
       </div>
-      <div class="info-row">
-        <i class="icon fas fa-envelope"></i>
-        <p><strong>Gmail:</strong></p>
-        <div class="info-box">{{ selectedProfile?.Accountemail }}</div>
-      </div>
-      <div class="info-row">
-        <i class="icon fas fa-phone"></i> 
-        <p><strong>Phone:</strong></p>
-        <div class="info-box">{{ selectedProfile?.Accountphone_number }}</div>
-      </div>
-      <div class="info-row">
-        <i class="icon fas fa-file-alt"></i>
-        <p><strong>CV profile:</strong></p>
-        <div class="info-box">{{ selectedProfile?.cv }}</div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" (click)="closeModal()">Đóng</button>
     </div>
   </div>
-</div>
-<!-- Modal -->
+</section>
+<!-- End contact-page Area -->
 
-<mat-paginator [length]="100"
-  [pageSize]="10"
-  [pageSizeOptions]="[5, 10, 25, 100]"
-  aria-label="Select page of emps">
-</mat-paginator>
-
-
-
-        </div>
-      </div>
-   </div>
-   
-  </section>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
-<!-- end contact-page Area -->
- 
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
