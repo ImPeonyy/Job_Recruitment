@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { JobService } from '../../services/job/job.service';
-import { Job_Index } from '../../models/job_index/job-index';
-import { CloudsService } from '../../services/clouds/clouds.service';
-import { Job } from '../../models/job/job';
+import { JobService } from '../../../services/job/job.service';
+import { Job_Index } from '../../../models/job_index/job-index';
+import { CloudsService } from '../../../services/clouds/clouds.service';
+import { Job } from '../../../models/job/job';
 import { MatDialog } from '@angular/material/dialog';
-import { UploadCvComponent } from '../others/upload-cv/upload-cv.component';
+import { UploadCvComponent } from '../../employee/upload-cv/upload-cv.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,8 +25,10 @@ export class IndexComponent implements OnInit {
   public $count_location: CountLocation[];
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.js.getJobIndexDesc().subscribe(res => {
       this.$job_index = res;
+      console.log(res);
     });
 
     this.js.getJobTypeDesc().subscribe(res => {
@@ -52,7 +54,9 @@ export class IndexComponent implements OnInit {
 
   openJobDetail(jobIndex) {
     this.cls.save('currJob', jobIndex);
-    this.router.navigate(['job-detail']);
+    this.router.navigate(['job-detail']).then(() => {
+      window.location.reload();
+    });
   }
 
 }

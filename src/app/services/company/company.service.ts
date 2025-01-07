@@ -22,7 +22,7 @@ export class CompanyService {
 
     public post(body): Observable<any> {
       const url = `${this.REST_API_SERVER}/Company`;
-      return this.http.post<any>(url, body, this.httpOptions);
+      return this.http.post<any>(url, body);
     }
 
     public put(body): Observable<any> {

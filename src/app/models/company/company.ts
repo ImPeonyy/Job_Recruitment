@@ -6,4 +6,5 @@ export interface Company {
     address: string;
     extent: number;
     logo: string;
+    file: File;
 }

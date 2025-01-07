@@ -6,3 +6,8 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.single-post {
+  background-color: #f1f9fc; 
+  cursor: pointer; position: relative;
+}

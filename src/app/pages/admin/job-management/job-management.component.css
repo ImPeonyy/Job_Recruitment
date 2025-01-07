@@ -1,0 +1,29 @@
+.action {
+    text-align: center;
+}
+
+.action button {
+    padding: 5px 10px; /* Adjust padding as needed */
+    border-radius: 3px; /* Adjust border radius as needed */
+    font-size: 14px; /* Adjust font size as needed */
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 5px; /* Khoảng cách giữa các nút */
+  }
+  
+  .action .btn-success {
+    background-color: #28a745; /* Green color */
+    border: none;
+    color: white;
+  }
+  
+  .action .btn-danger {
+    background-color: #dc3545; /* Red color */
+    border: none;
+    color: white;
+  }
+  
+  .action .large-icon {
+    margin-right: 5px; /* Add spacing between icon and text */
+  }

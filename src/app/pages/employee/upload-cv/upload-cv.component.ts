@@ -84,6 +84,7 @@ export class UploadCvComponent implements OnInit {
         }, 3000);
       },
       error => {
+        console.log(error);
         this.openSnackBar('Đã xảy ra lỗi, vui lòng thử lại !', 3);
       }
     );

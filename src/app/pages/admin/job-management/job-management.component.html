@@ -1,63 +1,62 @@
+<h3 style="text-align: center;">Job Management</h3>
 
-    <h3 style="text-align: center;">Job Management</h3>
+<mat-form-field style="width: 40%;">
+  <mat-label>Search...</mat-label>
+  <input matInput (keyup)="applyFilter($event)" #input>
+</mat-form-field>
 
-    <mat-form-field style="width: 40%;">
-      <mat-label>Search...</mat-label>
-      <input matInput (keyup)="applyFilter($event)" #input>
-    </mat-form-field>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 demo-table">
 
-    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 demo-table">
+  <ng-container matColumnDef="ID">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let i; let ele = index">{{ele + 1}}</td>
+  </ng-container>
 
-      <ng-container matColumnDef="ID">
-          <th mat-header-cell *matHeaderCellDef>ID</th>
-          <td mat-cell *matCellDef="let i; let ele = index">{{ele + 1}}</td>
-      </ng-container>
-    
-      <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
-          <td mat-cell *matCellDef="let i">{{i.title}}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="min_salary">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Salary</th>
-        <td mat-cell *matCellDef="let i">{{i.min_salary}}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Company</th>
-        <td mat-cell *matCellDef="let i">{{i.name}}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="date_expired">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Expired</th>
-        <td mat-cell *matCellDef="let i">{{i.date_expired}}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="action" class="action" style="margin-left: 100px !important;">
-        <th mat-header-cell *matHeaderCellDef> Action </th>
-        <td mat-cell *matCellDef="let i"> 
-            <button mat-icon-button color="primary">
-                <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn">
-                <mat-icon>delete</mat-icon>
-            </button>
-            <button mat-icon-button>
-                <mat-icon>info</mat-icon>
-            </button>
-        </td>
-      </ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr
-          mat-row
-          (click)="clickedRows.add(row)"
-          [class.demo-row-is-clicked]="clickedRows.has(row)"
-          *matRowDef="let row; columns: displayedColumns;"
-      ></tr>
-  </table>
-  <mat-paginator [length]="100"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page of emps">
-  </mat-paginator>
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+    <td mat-cell *matCellDef="let i">{{i.title}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="min_salary">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Salary</th>
+    <td mat-cell *matCellDef="let i">${{i.min_salary}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="company_name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Company</th>
+    <td mat-cell *matCellDef="let i">{{i.company_name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="date_expired">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Expired</th>
+    <td mat-cell *matCellDef="let i">{{i.date_expired}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="state">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+    <td mat-cell *matCellDef="let i">
+      <span *ngIf="i.state === 0" class="badge badge-secondary">Pending</span>
+      <span *ngIf="i.state === 1" class="badge badge-success">Accept</span>
+      <span *ngIf="i.state === -1" class="badge badge-danger">Decline</span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action" class="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let i">
+      <button class="btn btn-success btn-sm mr-2" ><i
+          class="fa fa-check-circle large-icon"></i></button>
+      <button class="btn btn-danger btn-sm" ><i
+          class="fa fa-times-circle large-icon"></i></button>
+      <!-- <button mat-icon-button color="warn" (click)="deleteJob(i)">
+        <mat-icon>delete</mat-icon>
+      </button> -->
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)"
+    *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of emps">
+</mat-paginator>

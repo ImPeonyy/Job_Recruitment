@@ -67,11 +67,16 @@ export class SignInComponent implements OnInit{
     sessionStorage.setItem('auth', 'true')
   }
 
+  setAccRegis(acc) {
+    this.cls.save('accRegis', acc);
+  }
+
   onSignUp() {
     if (this.signUpForm.valid) {
       if(this.account.role == -1) {
         this.as.post(this.account).subscribe(
           (res: any) => {
+            this.setAccRegis(this.account);
             this.initializeAccount();
             this.router.navigate(['post-company']);
           },
@@ -82,6 +87,7 @@ export class SignInComponent implements OnInit{
       } else {
         this.as.post(this.account).subscribe(
           (res: any) => {
+            this.setAccRegis(this.account);
             this.initializeAccount();
             this.isSignDivVisiable  = false;          },
           (err: any) => {

@@ -1,64 +1,22 @@
-<!-- 
-<div style="margin: 50px;">
-    <h2 style="text-align: center;">Post new Job</h2>
-    <form class="form-area " id="myForm" class="contact-form text-left mt-20" (ngSubmit)="post()" #jobForm="ngForm">
-        <div class="row">	
-            <div class="col-lg-12 form-group">
-
-                <input [(ngModel)]="company.name" name="name" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" class="common-input mb-20 form-control" required="" type="text">
-            
-                <input [(ngModel)]="company.link" name="link" placeholder="URL" onfocus="this.placeholder = ''" onblur="this.placeholder = 'URL'" class="common-input mb-20 form-control" required="" type="text">
-
-                <input [(ngModel)]="company.address" name="address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'" class="common-input mb-20 form-control" required="" type="text">
-
-                <input [(ngModel)]="company.extent" name="extent" placeholder="Extent" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Extent'" class="common-input mb-20 form-control" required="" type="text">
-
-                <input [(ngModel)]="company.logo" name="logo" placeholder="Logo" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logo'" class="common-input mb-20 form-control" required="" type="text">
-
-                
-                <button class="genric-btn primary circle mt-10 large" style="float: right; font-size: large;">Submit</button>
-                <div class="mt-20 alert-msg" style="text-align: left;"></div>
-            </div>
-        </div>
-    </form>	
-</div> -->
-
-
-
-<div class="parent"> 
+<div class="parent">
     <div class="container" [ngClass]="isSignDivVisiable ? 'active' :'' " id="container">
-        <div class="form-container sign-up" >
-            <form [formGroup]="postCompanyForm" (ngSubmit)="post()">
+        <div class="form-container sign-up">
+            <form (ngSubmit)="post()">
                 <h3>Company informations</h3>
-            
-                <input type="text" formControlName="name" placeholder="Name" class="form-control" required [(ngModel)]="company.company_name">
-                <div *ngIf="postCompanyForm.get('name')?.invalid && postCompanyForm.get('name')?.touched" class="error-message">
-                    Name is required.
-                </div>
-            
-                <input type="text" formControlName="link" placeholder="Link" required [(ngModel)]="company.link">
-                <div *ngIf="postCompanyForm.get('link')?.invalid && postCompanyForm.get('link')?.touched" class="error-message">
-                    Link is required.
-                </div>
-            
-                <input type="text" formControlName="address" placeholder="Address" required [(ngModel)]="company.address">
-                <div *ngIf="postCompanyForm.get('address')?.invalid && postCompanyForm.get('address')?.touched" class="error-message">
-                    Address is required.
-                </div>
-            
-                <input type="number" formControlName="extent" placeholder="Extent" required [(ngModel)]="company.extent">
-                <div *ngIf="postCompanyForm.get('extent')?.invalid && postCompanyForm.get('extent')?.touched" class="error-message">
-                    Extent is required.
-                </div>
-            
-                <input type="file" formControlName="logo" placeholder="Logo" required [(ngModel)]="company.logo">
-                <div *ngIf="postCompanyForm.get('logo')?.invalid && postCompanyForm.get('logo')?.touched" class="error-message">
-                    Logo is required.
-                </div>
-            
-                <button type="submit" [disabled]="postCompanyForm.invalid">Submit</button>
+
+                <input type="text" name="company_name" placeholder="Company Name" [(ngModel)]="company.company_name">
+
+                <input type="text" name="link" placeholder="Link" [(ngModel)]="company.link">
+
+                <input type="text" name="address" placeholder="Address" [(ngModel)]="company.address">
+
+                <input type="number" name="extent" placeholder="Extent" [(ngModel)]="company.extent">
+
+                <input type="file" name="file" (change)="onFileSelected($event)">
+
+                <button type="submit">Submit</button>
             </form>
-            
+
         </div>
         <div class="toggle-container">
             <div class="toggle">
@@ -69,4 +27,3 @@
         </div>
     </div>
 </div>
-

@@ -2,41 +2,43 @@
 <section class="banner-area relative" id="home">
     <div class="overlay overlay-bg"></div>
     <div class="container">
-      <div class="row d-flex align-items-center justify-content-center">
-        <div class="about-content col-lg-12">
-          <h1 class="text-white">Find Your Future, One Click at a Time.</h1>
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">Find Your Future, One Click at a Time.</h1>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
-<!-- End banner Area -->	
+</section>
+<!-- End banner Area -->
 
 <!-- Start post Area -->
 <section class="post-area section-gap">
     <div class="container">
         <div class="row justify-content-center d-flex">
             <div class="col-lg-8 post-list">
-                <div class="single-post d-flex flex-row" *ngFor="let i of $job_index" style="background-color: #f1f9fc; cursor: pointer; position: relative;">
+                <div class="single-post d-flex flex-row" *ngFor="let i of $job_index" (click)="openJobDetail(i)">
                     <div class="thumb">
-                        <img src=".\assets\img\company_logo\default-company-logo.png" alt="" style="width: 100px; height: 100px; margin-right: 10px; border: 1px solid #e5e5e5; ">
-                        
+                        <img src="{{i.logo}}" alt="" style="width: 100px; height: 100px; margin-right: 10px; border: 1px solid #e5e5e5; ">
+
                     </div>
                     <div class="details">
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
-                                <a><h4>{{i.title}}</h4></a>
-                                <h6>{{i.company_name}}</h6>					
+                                <a>
+                                    <h4>{{i.title}}</h4>
+                                </a>
+                                <h6>{{i.company_name}}</h6>
                             </div>
                             <ul class="btns" style="margin-right: 10px !important;">
                                 <li (click)="applyJob(i)"><a>Apply</a></li>
                             </ul>
                         </div>
-                        <h5>{{i.job_title}}</h5>
-                        <p class="address"><span class="lnr lnr-map"></span> {{i.location}}</p>
-                        <p class="address"><span class="lnr lnr-database"></span>{{i.min_salary}}$ - {{i.max_salary}}$</p>
+                        <h5 style="font-size: large;">{{i.job_title}}</h5>
+                        <p class="address"><span class="lnr lnr-map"></span> {{i.province_name}}</p>
+                        <p *ngIf="i.min_salary != null" class="address"><span class="lnr lnr-database"></span>{{i.min_salary}}$ - {{i.max_salary}}$</p>
                     </div>
                 </div>
-                
+
                 <a class="text-uppercase loadmore-btn mx-auto d-block" href="category.html">Load More job Posts</a>
 
             </div>
@@ -45,7 +47,7 @@
                     <h4>Jobs by Location</h4>
                     <ul class="cat-list">
                         <li *ngFor="let i of $count_location">
-                            <a class="justify-content-between d-flex" >
+                            <a class="justify-content-between d-flex">
                                 <p>{{i.name}}</p>
                                 <span>{{i.count}}</span>
                             </a>
@@ -67,6 +69,6 @@
 
             </div>
         </div>
-    </div>	
+    </div>
 </section>
 <!-- End post Area -->

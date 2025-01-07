@@ -22,18 +22,13 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import {MatRadioModule} from '@angular/material/radio';
 
 import { AppComponent } from './app.component';
-import { IndexComponent } from './pages/index/index.component';
+import { IndexComponent } from './pages/others/index/index.component';
 import { PostJobComponent } from './pages/employer/post-job/post-job.component';
 import { PutJobComponent } from './pages/employer/put-job/put-job.component';
-import { ManageJobPostingsComponent } from './pages/manage-job-postings/manage-job-postings.component';
-import { JobComponent } from './pages/admin/job/job.component';
-import { ManagementComponent } from './pages/employer/management/management.component';
-import { JobSearchComponent } from './pages/job-search/job-search.component';
+import { JobSearchComponent } from './pages/others/job-search/job-search.component';
 import { UserManagementComponent } from './pages/admin/user-management/user-management.component';
-import { ManageEnrolmentComponent } from './pages/manage-enrolment/manage-enrolment.component';
 import { PostJobValueComponent } from './pages/employer/post-job-value/post-job-value.component';
 import { PutJobValueComponent } from './pages/employer/put-job-value/put-job-value.component';
-import { TestComponent } from './test/test.component';
 import { SignInComponent } from './pages/others/sign-in/sign-in.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PostCompanyComponent } from './pages/others/post-company/post-company.component';
@@ -42,9 +37,11 @@ import { EmployerLayoutComponent } from './pages/employer/employer-layout/employ
 import { ManageApplicationHistoryComponent } from './pages/manage-application-history/manage-application-history.component';
 import { AdminLayoutComponent } from './pages/admin/admin-layout/admin-layout.component';
 import { JobManagementComponent } from './pages/admin/job-management/job-management.component';
-import { UploadCvComponent } from './pages/others/upload-cv/upload-cv.component';
-import { JobDetailComponent } from './pages/job-detail/job-detail.component';
+import { UploadCvComponent } from './pages/employee/upload-cv/upload-cv.component';
+import { JobDetailComponent } from './pages/others/job-detail/job-detail.component';
 import { UnauthorizedComponent } from './pages/others/unauthorized/unauthorized.component';
+import { JobComponent } from './pages/employer/job/job.component';
+import { AboutUsComponent } from './pages/others/about-us/about-us.component';
 
 
 @NgModule({
@@ -53,16 +50,10 @@ import { UnauthorizedComponent } from './pages/others/unauthorized/unauthorized.
     IndexComponent,
     PostJobComponent,
     PutJobComponent,
-    ManageJobPostingsComponent,
     JobSearchComponent,
     UserManagementComponent,
-    JobComponent,
-    ManageEnrolmentComponent,
-    JobComponent,
-    ManagementComponent,
     PostJobValueComponent,
     PutJobValueComponent,
-    TestComponent,
     SignInComponent,
     PostCompanyComponent,
     EnrolmentComponent,
@@ -73,6 +64,8 @@ import { UnauthorizedComponent } from './pages/others/unauthorized/unauthorized.
     UploadCvComponent,
     JobDetailComponent,
     UnauthorizedComponent,
+    JobComponent,
+    AboutUsComponent,
     
   ],
   imports: [

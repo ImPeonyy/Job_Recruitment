@@ -28,7 +28,7 @@ export class JobManagementComponent implements OnInit, AfterViewInit{
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
     
-    displayedColumns: string[] = ['ID', 'title','min_salary','name','date_expired','action'];
+    displayedColumns: string[] = ['ID', 'title','min_salary','company_name','date_expired', 'state', 'action'];
   
     dataSource = new MatTableDataSource<any>;
     clickedRows = new Set<Job>();
@@ -44,6 +44,7 @@ export class JobManagementComponent implements OnInit, AfterViewInit{
     getListJob() {
       this.js.getJobIndexDesc().subscribe({
         next: (res) => {
+          console.log(res);
           this.dataSource.data = res;
           this.dataSource.paginator = this.paginator;
         }
@@ -58,6 +59,13 @@ export class JobManagementComponent implements OnInit, AfterViewInit{
       console.log(this.getSelectedJob(job));
       // console.log(emp);
       
+    }
+
+    deleteJob(job: Job) {
+      if(confirm('Are you sure you want to delete this job?')) {
+        this.js.delete(job.ID).subscribe();
+        location.reload();
+      }
     }
 
     applyFilter(event: Event) {
