@@ -4,6 +4,11 @@ import { MatSort } from '@angular/material/sort';
 import { Enrolment } from '../../../models/enrolment/enrolment';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserjobService } from '../../../services/userjob/userjob.service';
+import { EnrolmentService } from '../../../services/enrolment/enrolment.service';
+import { CloudsService } from '../../../services/clouds/clouds.service';
+import { JobService } from '../../../services/job/job.service';
+import { Account } from '../../../models/account/account';
+import { Company } from '../../../models/company/company';
 
 @Component({
   selector: 'app-enrolment',
@@ -11,7 +16,7 @@ import { UserjobService } from '../../../services/userjob/userjob.service';
   styleUrl: './enrolment.component.css'
 })
 export class EnrolmentComponent implements OnInit {
-  DSEnrolment: any[] = [];
+  DSEnrolment: any[];
   DSjobtilte: any[] = [];
   showSuccess: boolean = false;
   showError: boolean = false;
@@ -24,10 +29,19 @@ export class EnrolmentComponent implements OnInit {
   keywordJobtitle: string = '';
   keywordRanking: string = '';
   showModalRanking: boolean = false;
-  constructor(private http: UserjobService) { }
+  account: Account;
+  company: Company;
+  constructor(private http: UserjobService, private erms: EnrolmentService,
+              private cls: CloudsService, private js: JobService
+  ) { }
 
   ngOnInit(): void {
-    this.TaiDSEnrolment();
+    this.account = this.cls.get('account');
+    this.js.getCompanyByID(this.account.ID).subscribe(res => {
+      this.company = res;
+      this.TaiDSEnrolment();
+    });
+    
     this.TaiJobTille();
   }
 
@@ -49,9 +63,8 @@ export class EnrolmentComponent implements OnInit {
   }
 
   TaiJobTille(): void {
-    this.http.Layenrolmentlist().subscribe(data => {
-      this.DSEnrolment = data;
-      this.DSjobtilte = [...new Set(this.DSEnrolment.map(i => i.jobtitle))];
+    this.http.LayDLJob().subscribe(data => {
+      this.DSjobtilte = data;
     });
   }
 
@@ -158,7 +171,7 @@ export class EnrolmentComponent implements OnInit {
   }
 
   TaiDSEnrolment() {
-    this.http.Layenrolmentlist().subscribe(data => {
+    this.erms.getEnrolmentlistByCompany(this.company.ID).subscribe(data => {
       this.DSEnrolment = data;
     });
   }

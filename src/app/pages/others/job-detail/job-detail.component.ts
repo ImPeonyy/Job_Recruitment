@@ -28,7 +28,7 @@ export class JobDetailComponent implements OnInit {
 
   applyJob(job) {
     this.dialogRef.open(UploadCvComponent, {
-      height: '1000px',
+      height: '500px',
       width: '640px'
     });
     this.setSelectedJob(job);

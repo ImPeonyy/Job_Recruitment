@@ -18,7 +18,7 @@
             <div class="col-lg-8 post-list">
                 <div class="single-post d-flex flex-row" *ngFor="let i of $job_index" (click)="openJobDetail(i)">
                     <div class="thumb">
-                        <img src="{{i.logo}}" alt="" style="width: 100px; height: 100px; margin-right: 10px; border: 1px solid #e5e5e5; ">
+                        <img src="{{i.logo}}" class="logo">
 
                     </div>
                     <div class="details">
@@ -29,9 +29,6 @@
                                 </a>
                                 <h6>{{i.company_name}}</h6>
                             </div>
-                            <ul class="btns" style="margin-right: 10px !important;">
-                                <li (click)="applyJob(i)"><a>Apply</a></li>
-                            </ul>
                         </div>
                         <h5 style="font-size: large;">{{i.job_title}}</h5>
                         <p class="address"><span class="lnr lnr-map"></span> {{i.province_name}}</p>

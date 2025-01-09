@@ -66,8 +66,8 @@
       <tbody>
         <tr *ngFor="let i of DSEnrolment; let n = index">
           <th scope="row">{{ n + 1 }}</th>
-          <td>{{ i.Accountname }}</td>
-          <td>{{ i.jobtitle }}</td>
+          <td>{{ i.name }}</td>
+          <td>{{ i.title }}</td>
           <td>{{ i.ranking }}</td>
           <td>
             <span *ngIf="i.state === 0" class="badge badge-secondary">Pending</span>

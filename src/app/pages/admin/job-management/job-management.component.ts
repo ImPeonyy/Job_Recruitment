@@ -76,4 +76,34 @@ export class JobManagementComponent implements OnInit, AfterViewInit{
         this.dataSource.paginator.firstPage();
       }
     }
+
+    updateStateApprove(job: Job) {
+      job.state = 1;
+      this.js.updateJobState(job).subscribe(
+        (res: any) => {
+          console.log(res);
+          setTimeout(() => {
+            window.location.reload();
+          }, 500 );
+        },
+        (err: any) => {
+          console.log(err);
+        }
+      );
+    }
+
+    updateStateDecline(job: Job) {
+      job.state = -1;
+      this.js.updateJobState(job).subscribe(
+        (res: any) => {
+          console.log(res);
+          setTimeout(() => {
+            window.location.reload();
+          }, 500 );
+        },
+        (err: any) => {
+          console.log(err);
+        }
+      );
+    }
 }

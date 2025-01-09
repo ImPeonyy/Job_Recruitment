@@ -29,7 +29,7 @@ export class JobSearchComponent implements OnInit{
   // keywordSearchCompany: string= '';
   diachi: any;
 
-  DSCombany: any[];
+  DSCompany: any[];
   DSTenCongTy: any[];
   DSDLJobType: any[];
   DSDLjobtitle: any[];
@@ -45,9 +45,9 @@ export class JobSearchComponent implements OnInit{
   }
   
   LayDSDiaChi() {
-  this.http.Layjoblist().subscribe(data => { 
+  this.http.LayDLProvince().subscribe(data => { 
     this.DSJob = data; 
-    this.DSDiaChi = [...new Set(this.DSJob.map(i=> i.Location))]; // Lọc địa chỉ duy nhất
+    this.DSDiaChi = [...new Set(this.DSJob.map(i=> i.province_name))]; 
     console.log('address:', this.DSDiaChi); });
   }
 
@@ -62,8 +62,8 @@ export class JobSearchComponent implements OnInit{
 
   LayDSCongTy() {
     this.http.LayDLCompany().subscribe(data => { 
-      this.DSCombany = data; 
-      this.DSTenCongTy = [...new Set(this.DSCombany.map(i=> i.name))]; // Lọc địa chỉ duy nhất
+      this.DSCompany = data; 
+      this.DSTenCongTy = [...new Set(this.DSCompany.map(i=> i.company_name))]; 
       console.log('Company:', this.DSTenCongTy); });
 
     }
@@ -71,7 +71,7 @@ export class JobSearchComponent implements OnInit{
     LayDSDLjobtitle() {
       this.http.Layjoblist().subscribe(data => { 
         this.DSJob = data; 
-        this.DSDLjobtitle = [...new Set(this.DSJob.map(i=> i.JobTitleDescription))]; // Lọc địa chỉ duy nhất
+        this.DSDLjobtitle = [...new Set(this.DSJob.map(i=> i.JobTitleDescription))]; 
         console.log('Jobtitle:', this.DSDLjobtitle); });
       }
 
@@ -92,7 +92,7 @@ export class JobSearchComponent implements OnInit{
     LayDSDLJobType() {
       this.http.Layjoblist().subscribe(data => { 
         this.DSJob = data; 
-        this.DSDLJobType = [...new Set(this.DSJob.map(i=> i.type_name))]; // Lọc địa chỉ duy nhất
+        this.DSDLJobType = [...new Set(this.DSJob.map(i=> i.type_name))]; 
         console.log('Job-Type:', this.DSDLJobType); });
       }
     

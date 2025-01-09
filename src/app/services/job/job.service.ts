@@ -79,4 +79,9 @@ export class JobService {
     const url = `${this.REST_API_SERVER}/Job/GetLocationDesc`;
     return this.http.get<any>(url, this.httpOptions);
   }
+
+  public updateJobState(job) : Observable<any[]> {
+      const url = `${this.REST_API_SERVER}/Job/Putstate`;
+      return this.http.put<any>(url, job, this.httpOptions);
+    }
 }

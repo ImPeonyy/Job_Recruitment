@@ -4,6 +4,7 @@ export interface Job_Index {
     company: number;
     location: number;
     address: string;
+    address1: string;
     job_des: string;
     job_req: string;
     date_expired: Date;
@@ -12,6 +13,8 @@ export interface Job_Index {
     job_type: number;
     company_name: string;
     province_name: string;
+    link: string;
+    extent: number;
     logo: string;
     min_salary: number;
     max_salary: number;

@@ -45,12 +45,12 @@
     <th mat-header-cell *matHeaderCellDef> Action </th>
     <td mat-cell *matCellDef="let i">
       <button class="btn btn-success btn-sm mr-2" ><i
-          class="fa fa-check-circle large-icon"></i></button>
+          class="fa fa-check-circle large-icon" (click)="updateStateApprove(i)"></i></button>
       <button class="btn btn-danger btn-sm" ><i
-          class="fa fa-times-circle large-icon"></i></button>
-      <!-- <button mat-icon-button color="warn" (click)="deleteJob(i)">
+          class="fa fa-times-circle large-icon" (click)="updateStateDecline(i)"></i></button>
+      <button mat-icon-button color="warn" (click)="deleteJob(i)">
         <mat-icon>delete</mat-icon>
-      </button> -->
+      </button>
     </td>
   </ng-container>
 

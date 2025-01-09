@@ -86,12 +86,9 @@ export class UserjobService {
     return this.http.put<any>(url, enrolment, this.httpOptions);
   }
 
-
-
-
-
-
-
-
+  public LayDLProvince() : Observable<any[]> {
+    const url = `${this.REST_API_SERVER}/Province`;
+    return this.http.get<any>(url, this.httpOptions);
+  }
 
 }

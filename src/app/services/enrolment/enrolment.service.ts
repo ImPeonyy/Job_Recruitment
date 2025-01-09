@@ -33,4 +33,14 @@ export class EnrolmentService {
         const url = `${this.REST_API_SERVER}/Enrolment/${id}`;
         return this.http.delete<any>(url);
       }
+
+      public getEnrolmentlistByAccount(id) : Observable<any> {
+        const url = `${this.REST_API_SERVER}/Enrolment/GetListEnrolmentByAccount/${id}`;
+        return this.http.get<any>(url, this.httpOptions);
+      }
+
+      public getEnrolmentlistByCompany(id) : Observable<any> {
+        const url = `${this.REST_API_SERVER}/Enrolment/GetListEnrolmentByCompany/${id}`;
+        return this.http.get<any>(url, this.httpOptions);
+      }
 }

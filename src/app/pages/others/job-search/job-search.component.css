@@ -1,0 +1,12 @@
+.single-post {
+    background-color: #f1f9fc; 
+    cursor: pointer; position: relative;
+  }
+  
+  .logo {
+    width: 100px; 
+    height: 100px; 
+    margin-right: 10px; 
+    border: 1px solid #e5e5e5;
+    object-fit: scale-down;
+  }

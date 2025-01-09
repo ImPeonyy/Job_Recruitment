@@ -17,10 +17,10 @@
 <section class="post-area section-gap">
     <div class="container">
         <div class="row d-flex">
-            <div class="col-lg-8 post-list">
+            <div class="col-lg-10 post-list">
                 <div class="single-post d-flex flex-row" style="background-color: #f1f9fc;">
                     <div class="thumb">
-                        <img src="{{jobIndex.logo}}" alt="" style="width: 100px; height: 100px; margin-right: 10px; border: 1px solid #e5e5e5; ">
+                        <img src="{{jobIndex.logo}}" class="logo">
                         
                     </div>
                     <div class="details">
@@ -33,10 +33,10 @@
                                 <li style="cursor: pointer;" (click)="applyJob(jobIndex)"><a>Apply</a></li>
                             </ul>
                         </div>
-                        <h5>{{jobIndex.job_title}}</h5>
+                        <h5 style="font-size: large;">{{jobIndex.job_title}}</h5>
                         <p *ngIf="jobIndex.min_salary != null" class="address"><span class="lnr lnr-database"></span>Salary: {{jobIndex.min_salary}}$ - {{jobIndex.max_salary}}$</p>
                         <p *ngIf="jobIndex.min_exp != null" class="address"><span class="lnr lnr-map"></span>Experience: {{jobIndex.min_exp}} - {{jobIndex.max_exp}} Years of Experience</p>
-                        <p *ngIf="jobIndex.min_exp != null" class="address"><span class="fa fa-calendar-o"></span>Date Expired: {{jobIndex.date_expired | date: 'dd-MM-yyyy'}}</p>
+                        <p class="address"><span class="fa fa-calendar-o"></span>Date Expired: {{jobIndex.date_expired | date: 'dd-MM-yyyy'}}</p>
                     </div>
                 </div>														
             </div>
@@ -59,7 +59,26 @@
                         </li>
                         <li>
                             <img src="./assets/img/pages/list.jpg" alt="">
-                            <span><b><i> Description:</i></b> {{jobIndex.address}}</span>
+                            <span><b><i> Address:</i></b> {{jobIndex.address}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-12 post-list">
+                <div class="single-post job-experience">
+                    <h4 class="single-title">Conpany Infomations</h4>
+                    <ul>
+                        <li>
+                            <img src="./assets/img/pages/list.jpg" alt="">
+                            <span><b><i>Headquarter:</i></b> {{jobIndex.address1}}</span>
+                        </li>
+                        <li>
+                            <img src="./assets/img/pages/list.jpg" alt="">
+                            <span><b><i> Company Link:</i></b> <a href="{{jobIndex.link}}"> {{jobIndex.link}}</a></span>
+                        </li>
+                        <li>
+                            <img src="./assets/img/pages/list.jpg" alt="">
+                            <span><b><i> Extent:</i></b> About {{jobIndex.extent}} members</span>
                         </li>
                     </ul>
                 </div>
@@ -68,6 +87,7 @@
     </div>	
 </section>
 <!-- End post Area -->
+
 
 
 
