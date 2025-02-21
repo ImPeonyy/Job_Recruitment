@@ -26,7 +26,7 @@ export class EnrolmentService {
   
       public put(body): Observable<any> {
         const url = `${this.REST_API_SERVER}/Enrolment`;
-        return this.http.put<any>(url, body);
+        return this.http.put<any>(url, body, this.httpOptions);
       }
   
       public delete(id): Observable<any> {

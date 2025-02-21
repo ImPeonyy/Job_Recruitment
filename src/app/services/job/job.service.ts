@@ -43,6 +43,11 @@ export class JobService {
     return this.http.get<any>(url, this.httpOptions);
   }
 
+  public getJobIndex(): Observable<any> {
+    const url = `${this.REST_API_SERVER}/Job/GetJobIndex`;
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
   public getJobIndexByID(id): Observable<any> {
     const url = `${this.REST_API_SERVER}/Job/GetJobIndex/${id}`;
     return this.http.get<any>(url, this.httpOptions);

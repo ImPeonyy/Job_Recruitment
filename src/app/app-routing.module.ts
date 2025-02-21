@@ -14,6 +14,9 @@ import { RoleGuard } from './guards/role.guard';
 import { UnauthorizedComponent } from './pages/others/unauthorized/unauthorized.component';
 import { JobComponent } from './pages/employer/job/job.component';
 import { AboutUsComponent } from './pages/others/about-us/about-us.component';
+import { EmployeeLayoutComponent } from './pages/employee/employee-layout/employee-layout.component';
+import { ManageApplicationHistoryComponent } from './pages/employee/manage-application-history/manage-application-history.component';
+import { ProfileComponent } from './pages/employee/profile/profile.component';
 
 const routes: Routes = [
   {path: '', component: IndexComponent, canActivate: [RoleGuard], data: { roles: [-1, 0, 1] },},
@@ -31,6 +34,11 @@ const routes: Routes = [
   ]},
 
   //Employee
+  {path: 'employee', component: EmployeeLayoutComponent, canActivate: [RoleGuard], data: { roles: [1] },
+    children: [
+    {path: 'profile', component: ProfileComponent},
+    {path: 'enrolment-history', component: ManageApplicationHistoryComponent},
+  ]},
 
   // Employer
   {path: 'employer', component: EmployerLayoutComponent, canActivate: [RoleGuard], data: { roles: [-1] },

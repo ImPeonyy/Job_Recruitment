@@ -46,6 +46,7 @@ export class UserjobService {
   
 
 
+
   public Layenrolmentlist() : Observable<any[]> {
     const url = `${this.REST_API_SERVER}/Enrolment/GetListEnrolment`;
     return this.http.get<any>(url, this.httpOptions);

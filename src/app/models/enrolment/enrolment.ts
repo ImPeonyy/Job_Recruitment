@@ -5,5 +5,5 @@ export interface Enrolment {
     cv: string;
     state: number;
     file: File;
-    ranking: number;
+    rank: number;
 }

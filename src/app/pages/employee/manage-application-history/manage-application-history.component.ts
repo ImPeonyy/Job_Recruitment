@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserjobService } from '../../services/userjob/userjob.service';
+import { UserjobService } from '../../../services/userjob/userjob.service';
 //import { state } from '@angular/animations';
-import { Enrolment } from '../../models/enrolment/enrolment';
+import { Enrolment } from '../../../models/enrolment/enrolment';
+import { CloudsService } from '../../../services/clouds/clouds.service';
+import { EnrolmentService } from '../../../services/enrolment/enrolment.service';
+import { JobService } from '../../../services/job/job.service';
+import { Account } from '../../../models/account/account';
 
 @Component({
   selector: 'app-manage-application-history',
@@ -9,12 +13,14 @@ import { Enrolment } from '../../models/enrolment/enrolment';
   styleUrl: './manage-application-history.component.css'
 })
 export class ManageApplicationHistoryComponent implements OnInit{
-constructor(private http: UserjobService){
+constructor(private http: UserjobService, private erms: EnrolmentService,
+              private cls: CloudsService, private js: JobService){
 
 }
 
-
+  account: Account;
 ngOnInit(): void {
+  this.account = this.cls.get('account');
   this.TaiDSEnrolment()
  this.TaiJobTille()
  }
@@ -123,7 +129,7 @@ ngOnInit(): void {
   }
 
   TaiDSEnrolment() {
-    this.http.Layenrolmentlist().subscribe(data => {
+    this.erms.getEnrolmentlistByAccount(this.account.ID).subscribe(data => {
       this.DSEnrolment = data;
       this.DSEnrolment = this.DSEnrolment
       console.log('Search results for:',  this.DSEnrolment);

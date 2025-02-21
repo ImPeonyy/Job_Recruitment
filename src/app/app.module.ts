@@ -34,7 +34,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PostCompanyComponent } from './pages/others/post-company/post-company.component';
 import { EnrolmentComponent } from './pages/employer/enrolment/enrolment.component';
 import { EmployerLayoutComponent } from './pages/employer/employer-layout/employer-layout.component';
-import { ManageApplicationHistoryComponent } from './pages/manage-application-history/manage-application-history.component';
+import { ManageApplicationHistoryComponent } from './pages/employee/manage-application-history/manage-application-history.component';
 import { AdminLayoutComponent } from './pages/admin/admin-layout/admin-layout.component';
 import { JobManagementComponent } from './pages/admin/job-management/job-management.component';
 import { UploadCvComponent } from './pages/employee/upload-cv/upload-cv.component';
@@ -42,6 +42,8 @@ import { JobDetailComponent } from './pages/others/job-detail/job-detail.compone
 import { UnauthorizedComponent } from './pages/others/unauthorized/unauthorized.component';
 import { JobComponent } from './pages/employer/job/job.component';
 import { AboutUsComponent } from './pages/others/about-us/about-us.component';
+import { EmployeeLayoutComponent } from './pages/employee/employee-layout/employee-layout.component';
+import { ProfileComponent } from './pages/employee/profile/profile.component';
 
 
 @NgModule({
@@ -66,6 +68,8 @@ import { AboutUsComponent } from './pages/others/about-us/about-us.component';
     UnauthorizedComponent,
     JobComponent,
     AboutUsComponent,
+    EmployeeLayoutComponent,
+    ProfileComponent,
     
   ],
   imports: [

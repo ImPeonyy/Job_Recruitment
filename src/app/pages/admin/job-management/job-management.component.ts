@@ -42,7 +42,7 @@ export class JobManagementComponent implements OnInit, AfterViewInit{
     }
   
     getListJob() {
-      this.js.getJobIndexDesc().subscribe({
+      this.js.getJobIndex().subscribe({
         next: (res) => {
           console.log(res);
           this.dataSource.data = res;

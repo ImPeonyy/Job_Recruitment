@@ -36,7 +36,7 @@ export class UploadCvComponent implements OnInit {
       cv: 'default',
       file: null,
       state: 0,
-      ranking: 0
+      rank: 0
     }
   }
 
